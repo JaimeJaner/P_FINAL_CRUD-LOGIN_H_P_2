@@ -45,10 +45,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // lbl_Registro
             // 
             this.lbl_Registro.AutoSize = true;
-            this.lbl_Registro.Font = new System.Drawing.Font("Anger Styles", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Registro.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Registro.Location = new System.Drawing.Point(280, 9);
             this.lbl_Registro.Name = "lbl_Registro";
-            this.lbl_Registro.Size = new System.Drawing.Size(240, 108);
+            this.lbl_Registro.Size = new System.Drawing.Size(279, 73);
             this.lbl_Registro.TabIndex = 52;
             this.lbl_Registro.Text = "Registro";
             // 
@@ -157,6 +157,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.Controls.Add(this.txt_User);
             this.Controls.Add(this.btn_Registro);
             this.Name = "frm_SignUp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_SignUp";
             this.ResumeLayout(false);
             this.PerformLayout();

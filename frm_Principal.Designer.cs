@@ -85,6 +85,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.Controls.Add(this.btn_Inventario);
             this.Controls.Add(this.btn_ListaUsuarios);
             this.Name = "frm_Principal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_Principal";
             this.ResumeLayout(false);
 

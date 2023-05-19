@@ -49,6 +49,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btn_Atras);
             this.Name = "frm_ListaUsuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_ListaUsuarios";
             this.ResumeLayout(false);
 

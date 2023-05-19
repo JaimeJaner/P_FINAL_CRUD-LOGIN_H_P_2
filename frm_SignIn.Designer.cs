@@ -41,10 +41,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // lbl_IniciarSesion
             // 
             this.lbl_IniciarSesion.AutoSize = true;
-            this.lbl_IniciarSesion.Font = new System.Drawing.Font("Anger Styles", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_IniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_IniciarSesion.Location = new System.Drawing.Point(247, 70);
             this.lbl_IniciarSesion.Name = "lbl_IniciarSesion";
-            this.lbl_IniciarSesion.Size = new System.Drawing.Size(306, 108);
+            this.lbl_IniciarSesion.Size = new System.Drawing.Size(409, 73);
             this.lbl_IniciarSesion.TabIndex = 47;
             this.lbl_IniciarSesion.Text = "Inicia Sesión";
             // 
@@ -115,6 +115,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.Controls.Add(this.btn_Atras);
             this.Controls.Add(this.btn_IniciarSesion);
             this.Name = "frm_SignIn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_SignIn";
             this.ResumeLayout(false);
             this.PerformLayout();
