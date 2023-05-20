@@ -19,13 +19,10 @@ mono_crash.*
 # Build results
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Oo]bj/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
@@ -48,7 +45,6 @@ TestResult.xml
 nunit-*.xml
 
 # Build Results of an ATL Project
-[Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
 
