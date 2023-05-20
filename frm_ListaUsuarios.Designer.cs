@@ -43,6 +43,11 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.cbEstado = new System.Windows.Forms.ComboBox();
             this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnVerTodo = new System.Windows.Forms.Button();
+            this.BtnFinal = new System.Windows.Forms.Button();
+            this.BtnSiguiente = new System.Windows.Forms.Button();
+            this.BtnAtras = new System.Windows.Forms.Button();
+            this.BtnPrincipio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,15 +77,16 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.txtBuscarUsuario.Name = "txtBuscarUsuario";
             this.txtBuscarUsuario.Size = new System.Drawing.Size(123, 20);
             this.txtBuscarUsuario.TabIndex = 2;
+            this.txtBuscarUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarUsuario_KeyPress);
             // 
             // lblBucarUsuario
             // 
             this.lblBucarUsuario.AutoSize = true;
             this.lblBucarUsuario.Location = new System.Drawing.Point(13, 126);
             this.lblBucarUsuario.Name = "lblBucarUsuario";
-            this.lblBucarUsuario.Size = new System.Drawing.Size(77, 13);
+            this.lblBucarUsuario.Size = new System.Drawing.Size(75, 13);
             this.lblBucarUsuario.TabIndex = 5;
-            this.lblBucarUsuario.Text = "Buscar usuario";
+            this.lblBucarUsuario.Text = "Buscar cedula";
             // 
             // lblEstado
             // 
@@ -117,6 +123,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btnBuscar.TabIndex = 9;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnImportar
             // 
@@ -139,7 +146,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // dgvUsuarios
             // 
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(218, 127);
+            this.dgvUsuarios.Location = new System.Drawing.Point(227, 111);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.Size = new System.Drawing.Size(570, 288);
             this.dgvUsuarios.TabIndex = 12;
@@ -170,11 +177,74 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Lista de usuarios";
             // 
+            // btnVerTodo
+            // 
+            this.btnVerTodo.Location = new System.Drawing.Point(475, 405);
+            this.btnVerTodo.Name = "btnVerTodo";
+            this.btnVerTodo.Size = new System.Drawing.Size(85, 32);
+            this.btnVerTodo.TabIndex = 15;
+            this.btnVerTodo.Text = "Ver todo";
+            this.btnVerTodo.UseVisualStyleBackColor = true;
+            this.btnVerTodo.Click += new System.EventHandler(this.btnVerTodo_Click);
+            // 
+            // BtnFinal
+            // 
+            this.BtnFinal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnFinal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnFinal.Location = new System.Drawing.Point(621, 407);
+            this.BtnFinal.Name = "BtnFinal";
+            this.BtnFinal.Size = new System.Drawing.Size(49, 31);
+            this.BtnFinal.TabIndex = 27;
+            this.BtnFinal.Text = ">>";
+            this.BtnFinal.UseVisualStyleBackColor = true;
+            this.BtnFinal.Click += new System.EventHandler(this.BtnFinal_Click);
+            // 
+            // BtnSiguiente
+            // 
+            this.BtnSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnSiguiente.Location = new System.Drawing.Point(566, 407);
+            this.BtnSiguiente.Name = "BtnSiguiente";
+            this.BtnSiguiente.Size = new System.Drawing.Size(49, 31);
+            this.BtnSiguiente.TabIndex = 26;
+            this.BtnSiguiente.Text = ">";
+            this.BtnSiguiente.UseVisualStyleBackColor = true;
+            this.BtnSiguiente.Click += new System.EventHandler(this.BtnSiguiente_Click);
+            // 
+            // BtnAtras
+            // 
+            this.BtnAtras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnAtras.Location = new System.Drawing.Point(420, 407);
+            this.BtnAtras.Name = "BtnAtras";
+            this.BtnAtras.Size = new System.Drawing.Size(49, 31);
+            this.BtnAtras.TabIndex = 25;
+            this.BtnAtras.Text = "<";
+            this.BtnAtras.UseVisualStyleBackColor = true;
+            this.BtnAtras.Click += new System.EventHandler(this.BtnAtras_Click);
+            // 
+            // BtnPrincipio
+            // 
+            this.BtnPrincipio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnPrincipio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnPrincipio.Location = new System.Drawing.Point(365, 407);
+            this.BtnPrincipio.Name = "BtnPrincipio";
+            this.BtnPrincipio.Size = new System.Drawing.Size(49, 31);
+            this.BtnPrincipio.TabIndex = 24;
+            this.BtnPrincipio.Text = "<<";
+            this.BtnPrincipio.UseVisualStyleBackColor = true;
+            this.BtnPrincipio.Click += new System.EventHandler(this.BtnPrincipio_Click);
+            // 
             // frm_ListaUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnFinal);
+            this.Controls.Add(this.BtnSiguiente);
+            this.Controls.Add(this.BtnAtras);
+            this.Controls.Add(this.BtnPrincipio);
+            this.Controls.Add(this.btnVerTodo);
             this.Controls.Add(this.cbTipoUsuario);
             this.Controls.Add(this.cbEstado);
             this.Controls.Add(this.dgvUsuarios);
@@ -215,5 +285,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private System.Windows.Forms.ComboBox cbEstado;
         private System.Windows.Forms.ComboBox cbTipoUsuario;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Button btnVerTodo;
+        private System.Windows.Forms.Button BtnFinal;
+        private System.Windows.Forms.Button BtnSiguiente;
+        private System.Windows.Forms.Button BtnAtras;
+        private System.Windows.Forms.Button BtnPrincipio;
     }
 }

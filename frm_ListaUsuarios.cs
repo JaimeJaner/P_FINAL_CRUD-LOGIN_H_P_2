@@ -60,6 +60,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
         }
 
+       
+        
 
         //para actualizar/mostrar los datos de la DB por si hay algun cambio, ya sea un create, update, delete o solo si se quiere obtener los elementos
         //este metodo muestra los datos en el dgv ya sea la primera vez o si hay alguna actualizacion
@@ -95,14 +97,14 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                     string nombre = datareader_sqlite.GetString(1);
                     int cedula = datareader_sqlite.GetInt32(2);
                     int estado = datareader_sqlite.GetInt32(3);
-                    string estadoString = estado == 1 ? "Habilitado" : "desahibilitado";
-                    
+                    string estadoString = estado == 1 ? "Habilitado" : "Desahibilitado";
                     int tipo_usuario = datareader_sqlite.GetInt32(4);
+                    string tipo_usuarioString = tipo_usuario == 1 ? "Administrador" : "Empleado";
 
 
 
                     //los colocamos en el dgv
-                    dgvUsuarios.Rows.Add(id_Persona, nombre, cedula, estado, tipo_usuario);
+                    dgvUsuarios.Rows.Add(id_Persona, nombre, cedula, estadoString, tipo_usuarioString);
 
                 }
                 datareader_sqlite.Close();
@@ -119,10 +121,81 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Error (mostrando los datos en el dgv):\n" + ex);
             }
+            ValidarDgv();
+        }
 
 
-            //ValidarDgv();
 
+        public void GetDatoByCedula(int _cedula)
+        {
+            try
+            {
+                SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB();
+                //se abre conexionDB (se cierra en UpdateDgv)
+                conexionDB.Open();
+
+                string getData = string.Format("SELECT Id_persona, Nombre, Cedula, Estado, Tipo_usuario FROM {0} WHERE Cedula=@Cedula;", tableName);
+
+
+                SQLiteCommand cmd_getData = new SQLiteCommand(getData, conexionDB);
+                cmd_getData.Parameters.AddWithValue("@Cedula", _cedula);
+
+                if (Convert.ToInt32(cmd_getData.ExecuteScalar()) < 1) {
+                    MessageBox.Show("Error, cédula no encontrada");
+                    return;
+                }
+
+                //si la cedula se encuentra se ejecuta de aqui hacia abajo
+                SQLiteDataReader datareader_sqlite = cmd_getData.ExecuteReader();
+
+
+                dgvUsuarios.Rows.Clear();
+                dgvUsuarios.Columns.Clear();
+
+                dgvUsuarios.Columns.Add("id_Persona", "ID");
+                dgvUsuarios.Columns.Add("Nombre", "Nombre");
+                dgvUsuarios.Columns.Add("Cedula", "Cedula");
+                dgvUsuarios.Columns.Add("Estado", "Estado");
+                dgvUsuarios.Columns.Add("Tipo usuario", "Tipo usuario");
+
+                while (datareader_sqlite.Read())
+                {
+                    //Obtenemos los datos
+                    int id_Persona = datareader_sqlite.GetInt32(0);
+                    string nombre = datareader_sqlite.GetString(1);
+                    int cedula = datareader_sqlite.GetInt32(2);
+                    int estado = datareader_sqlite.GetInt32(3);
+                    string estadoString = estado == 1 ? "Habilitado" : "Desahibilitado";
+                    int tipo_usuario = datareader_sqlite.GetInt32(4);
+                    string tipo_usuarioString = tipo_usuario == 1 ? "Administrador" : "Empleado";
+
+
+
+                    //los colocamos en el dgv
+                    dgvUsuarios.Rows.Add(id_Persona, nombre, cedula, estadoString, tipo_usuarioString);
+
+                }
+                datareader_sqlite.Close();
+                conexionDB.Close();
+
+
+
+
+                
+
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("Error obteniendo los datos desde la base de datos\n" + ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+
+            }
+
+            ValidarDgv();
         }
 
 
@@ -379,5 +452,105 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         {
             UpdateDgv();
         }
+
+        private void txtBuscarUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBuscarUsuario.Text))
+            {
+                MessageBox.Show("Ingrese la cédula a buscar");
+                return;
+            }
+
+
+            GetDatoByCedula(Convert.ToInt32(txtBuscarUsuario.Text));
+        }
+
+        private void btnVerTodo_Click(object sender, EventArgs e)
+        {
+            UpdateDgv();
+        }
+
+
+
+
+        /* navegacion */
+
+        private void ValidarDgv()
+        {
+            if (dgvUsuarios.RowCount > 0)
+            {
+                BtnPrincipio.Enabled = true;
+                BtnAtras.Enabled = true;
+                BtnSiguiente.Enabled = true;
+                BtnFinal.Enabled = true;
+            }
+            else
+            {
+                BtnPrincipio.Enabled = false;
+                BtnAtras.Enabled = false;
+                BtnSiguiente.Enabled = false;
+                BtnFinal.Enabled = false;
+            }
+        }
+
+        private int selectedRowIndex = -1;
+
+        private void dgvUsuarios_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                selectedRowIndex = e.RowIndex;
+            }
+        }
+
+
+        private void BtnPrincipio_Click(object sender, EventArgs e)
+        {
+            selectedRowIndex = 0;
+
+
+            dgvUsuarios.Rows[selectedRowIndex].Selected = true;
+            dgvUsuarios.CurrentCell = dgvUsuarios.Rows[selectedRowIndex].Cells[0];
+
+        }
+
+        private void BtnAtras_Click(object sender, EventArgs e)
+        {
+            if (selectedRowIndex > 0)
+            {
+                selectedRowIndex--;
+                dgvUsuarios.Rows[selectedRowIndex].Selected = true;
+                dgvUsuarios.CurrentCell = dgvUsuarios.Rows[selectedRowIndex].Cells[0];
+            }
+        }
+
+
+        private void BtnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (selectedRowIndex < dgvUsuarios.Rows.Count - 1)
+            {
+                selectedRowIndex++;
+                dgvUsuarios.Rows[selectedRowIndex].Selected = true;
+                dgvUsuarios.CurrentCell = dgvUsuarios.Rows[selectedRowIndex].Cells[0];
+            }
+        }
+
+        private void BtnFinal_Click(object sender, EventArgs e)
+        {
+
+            selectedRowIndex = dgvUsuarios.Rows.Count - 1;
+            dgvUsuarios.Rows[selectedRowIndex].Selected = true;
+            dgvUsuarios.CurrentCell = dgvUsuarios.Rows[selectedRowIndex].Cells[0];
+        }
+
     }
 }
