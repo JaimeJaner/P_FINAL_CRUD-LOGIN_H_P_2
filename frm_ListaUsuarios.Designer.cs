@@ -114,6 +114,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btnActualizar.TabIndex = 8;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnBuscar
             // 
@@ -127,7 +128,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             // btnImportar
             // 
-            this.btnImportar.Location = new System.Drawing.Point(604, 57);
+            this.btnImportar.Location = new System.Drawing.Point(621, 25);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(75, 23);
             this.btnImportar.TabIndex = 10;
@@ -136,7 +137,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(697, 57);
+            this.btnExportar.Location = new System.Drawing.Point(714, 25);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(75, 23);
             this.btnExportar.TabIndex = 11;

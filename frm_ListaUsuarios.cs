@@ -14,6 +14,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
     public partial class frm_ListaUsuarios : Form
     {
 
+        private static string DBName = "DB_DonacionesSA";
+        private static string tableName = "tbl_Usuario";
        
 
         public frm_ListaUsuarios()
@@ -21,8 +23,17 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             InitializeComponent();
         }
 
-        private static string DBName = "DB_DonacionesSA";
-        private static string tableName = "tbl_Usuario";
+        //apenas cargue la pagina se carguen los usuarios
+        private void frm_ListaUsuarios_Load(object sender, EventArgs e)
+        {
+            UpdateDgv();
+
+            cbEstado.Items.Add("Habilitar");
+            cbEstado.Items.Add("Deshabilitar");
+
+            cbTipoUsuario.Items.Add("Administrador");
+            cbTipoUsuario.Items.Add("Empleado");
+        }
 
         //se obtienen los datos de la DB
         public SQLiteCommand GetDatos()
@@ -125,7 +136,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         }
 
 
-
+        //obtener un dato (si existe) por su cedula
         public void GetDatoByCedula(int _cedula)
         {
             try
@@ -200,8 +211,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
 
 
-        /*
         //creando un dato
+        /*
         public SQLiteCommand CreateDato()
         {
 
@@ -281,9 +292,11 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
         }
 
+        */
 
+        //llenar comboBox 
+        /*
         
-        //llenar comboBox y UpdateDato
 
         //se llena los comboBox con los ids (sirve para el metodo de actualizar y eliminar)
 
@@ -334,87 +347,69 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
         }
 
+        */
+
         // UpdateDato
 
         public SQLiteCommand UpdateDato()
         {
-            string queryActualizar;
+            string queryActualizar = "";
 
 
             SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB();
             conexionDB.Open();
             //dependiendo de los datos ingresados se hace un query u otro
 
-            float nuevoPrecio;
-            if (!string.IsNullOrEmpty(txtNuevoPrecio.Text) && !float.TryParse(txtNuevoPrecio.Text, out nuevoPrecio))
+
+            //UPDATE tbl_Usuario SET Tipo_usuario = 0 WHERE Cedula = 741
+
+            if (cbEstado.SelectedIndex != -1 && cbTipoUsuario.SelectedIndex != -1)
             {
-                MessageBox.Show("Error: el precio debe de ser un valor numerico");
-                return null;
+                queryActualizar = string.Format("UPDATE {0} SET Tipo_usuario=@Tipo_usuario, Estado=@Estado where Cedula=@Cedula", tableName);
             }
-
-            if (txtNuevoPrecio.Text.Contains(","))
+            else if (cbEstado.SelectedIndex != -1 && cbTipoUsuario.SelectedIndex == -1)
             {
-                MessageBox.Show("Error, no ingrese ',' en el nuevo precio");
-                return null;
-
-            }
-
-            if (cbIdAEditar.SelectedIndex == -1)
-            {
-                MessageBox.Show("Error: debes de seleccionar un id de un producto para modificar\n" +
-                    "Prueba con traer los productos para ver los ids disponibles");
-                return null;
-            }
-
-
-            if (!string.IsNullOrEmpty(txtNuevoNombre.Text) && !string.IsNullOrEmpty(txtNuevoPrecio.Text))
-            {
-                queryActualizar = string.Format("update {0} set name=@name, price=@price where id=@id", tableName);
-            }
-            else if (!string.IsNullOrEmpty(txtNuevoNombre.Text) && string.IsNullOrEmpty(txtNuevoPrecio.Text))
-            {
-                queryActualizar = string.Format("update {0} set name=@name where id=@id", tableName);
+                queryActualizar = string.Format("UPDATE {0} SET Estado=@Estado where Cedula=@Cedula", tableName);
 
             }
-            else if (string.IsNullOrEmpty(txtNuevoNombre.Text) && !string.IsNullOrEmpty(txtNuevoPrecio.Text))
+            else if (cbEstado.SelectedIndex == -1 && cbTipoUsuario.SelectedIndex != -1)
             {
-                queryActualizar = string.Format("update {0} set price=@price where id=@id", tableName);
+                queryActualizar = string.Format("UPDATE {0} SET Tipo_usuario=@Tipo_usuario where Cedula=@Cedula", tableName);
             }
             else
             {
-                MessageBox.Show("Ingrese al menos un nuevo nombre o precio");
-                return null;
+                MessageBox.Show("Ingrese el nuevo estado y/o el nuevo tipo de usuario");
+                
             }
 
             //se crea el comando con uno de los querys de arriba
             SQLiteCommand cmd_actualizar = new SQLiteCommand(queryActualizar, conexionDB);
 
-
-            if (cbIdAEditar.SelectedIndex != -1)
+            if (string.IsNullOrEmpty(txtBuscarUsuario.Text))
             {
-                cmd_actualizar.Parameters.AddWithValue("@id", Convert.ToInt32(cbIdAEditar.SelectedItem.ToString()));
-
-                // se agrega una u otra o las dos opciones dependiendo de los que ingrese o no el usuario
-                if (!string.IsNullOrEmpty(txtNuevoNombre.Text))
-                {
-                    cmd_actualizar.Parameters.AddWithValue("@name", txtNuevoNombre.Text);
-                }
-                if (!string.IsNullOrEmpty(txtNuevoPrecio.Text))
-                {
-                    cmd_actualizar.Parameters.AddWithValue("@price", txtNuevoPrecio.Text);
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un ID");
+                MessageBox.Show("Debe de seleccionar un usuario (por su cédula) para actualizarle los datos");
                 return null;
+
             }
+
+            cmd_actualizar.Parameters.AddWithValue("@Cedula", Convert.ToInt32(txtBuscarUsuario.Text));
+
+            // se agrega una u otra o las dos opciones dependiendo de los que ingrese o no el usuario
+            if (cbEstado.SelectedIndex != -1)
+            {
+                cmd_actualizar.Parameters.AddWithValue("@Estado", cbEstado.SelectedItem.ToString() == "Habilitar" ? 1 : 0);
+            }
+            if (cbTipoUsuario.SelectedIndex != -1)
+            {
+                cmd_actualizar.Parameters.AddWithValue("@Tipo_usuario", cbTipoUsuario.SelectedItem.ToString() == "Administrador" ? 1 : 0);
+            }
+            
 
             return cmd_actualizar;
         }
 
         //delete dato
+        /*
         public int DeleteDato()
         {
             string queryEliminarProducto = string.Format("delete from {0} where id=@id", tableName);
@@ -440,6 +435,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         */
 
 
+        //pa que vaya a la pagina principal
         private void btn_Atras_Click(object sender, EventArgs e)
         {
             frm_Principal Principal = new frm_Principal();
@@ -447,12 +443,9 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             Hide();
         }
 
+        
 
-        private void frm_ListaUsuarios_Load(object sender, EventArgs e)
-        {
-            UpdateDgv();
-        }
-
+        //pa que solo ponga numeros
         private void txtBuscarUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
@@ -462,6 +455,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             }
         }
 
+        //comprueba que no este vacio y llama al metodo GetDatoByCedula con el valor que tiene txtBuscarUsuario.Text
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtBuscarUsuario.Text))
@@ -474,10 +468,66 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             GetDatoByCedula(Convert.ToInt32(txtBuscarUsuario.Text));
         }
 
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB();
+
+                SQLiteCommand cmd_UpdateDato = UpdateDato();
+
+
+                if (cmd_UpdateDato != null && cmd_UpdateDato.GetType() == typeof(SQLiteCommand))
+                {
+                    conexionDB.Open();
+                    int filasAfectadas = cmd_UpdateDato.ExecuteNonQuery();
+                    //MessageBox.Show("Producto modificado con exito");
+
+                    if (filasAfectadas > 0)
+                    {
+                        MessageBox.Show("Usuario modificado con exito");
+                    }
+                    else
+                    {
+                        MessageBox.Show("El usuario no existe");
+
+                    }
+
+                    UpdateDgv();
+                }
+                else
+                {
+
+                    MessageBox.Show("Error al modificar al usuario");
+
+                }
+
+                conexionDB.Close();
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("Error (sql):\n" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:\n" + ex.Message);
+            }
+
+        }
+
+
+        //mostrar todos los datos por si antes le dio en buscar alguno y ahora quiere volver a ver a todos los users si sabe
         private void btnVerTodo_Click(object sender, EventArgs e)
         {
             UpdateDgv();
         }
+
+
+
+
+
+
 
 
 
@@ -552,5 +602,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             dgvUsuarios.CurrentCell = dgvUsuarios.Rows[selectedRowIndex].Cells[0];
         }
 
+        
     }
 }
