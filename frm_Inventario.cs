@@ -21,7 +21,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
 
         private static string DBName = "DB_DonacionesSA";
-        private static string tableName = "tbl_Usuario";
+        private static string tableName = "tbl_Producto";
         public frm_Inventario()
         {
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
 
                     //Insertando valores, no se inserta el id ya que es auto incrementable
-                    cmd_sqlite.CommandText = string.Format("INSERT INTO tbl_Producto (nom, precio) VALUES ('" + txtNombre.Text + "', " + txtCant.Text + ")");
+                    cmd_sqlite.CommandText = string.Format("INSERT INTO tbl_Producto (Nombre_producto, Cantidad) VALUES ('" + txtNombre.Text + "', " + txtCant.Text + ")");
 
                     MessageBox.Show("Registrado Correctamente");
 
@@ -66,6 +66,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Por favor llene los campos");
             }
+            UpdateDgv();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -109,6 +110,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Por favor llene los campos");
             }
+            UpdateDgv();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -141,6 +143,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Por favor llene los campos");
             }
+            UpdateDgv();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -159,11 +162,12 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Por favor llene los campos");
             }
+            UpdateDgv();
         }
 
         private void frm_Inventario_Load(object sender, EventArgs e)
         {
-
+            UpdateDgv();
         }
 
         //se obtienen los datos de la DB
@@ -175,7 +179,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                 //se abre conexionDB (se cierra en UpdateDgv)
                 conexionDB.Open();
 
-                string getProductos = string.Format("SELECT Id_persona, Nombre, Cedula, Estado, Tipo_usuario FROM {0};", tableName);
+                string getProductos = string.Format("SELECT Id_producto, Nombre_producto, Cantidad FROM {0};", tableName);
 
                 SQLiteCommand cmd_getProducts = new SQLiteCommand(getProductos, conexionDB);
 
@@ -219,27 +223,19 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                 dgvInventario.Columns.Clear();
 
 
-                dgvInventario.Columns.Add("id_Persona", "ID");
-                dgvInventario.Columns.Add("Nombre", "Nombre");
-                dgvInventario.Columns.Add("Cedula", "Cedula");
-                dgvInventario.Columns.Add("Estado", "Estado");
-                dgvInventario.Columns.Add("Tipo usuario", "Tipo usuario");
+                dgvInventario.Columns.Add("Id_producto", "ID");
+                dgvInventario.Columns.Add("Nombre_producto", "Nombre");
+                dgvInventario.Columns.Add("Cantidad", "Cantidad");    
 
                 while (datareader_sqlite.Read())
                 {
                     //Obtenemos los datos
-                    int id_Persona = datareader_sqlite.GetInt32(0);
-                    string nombre = datareader_sqlite.GetString(1);
-                    int cedula = datareader_sqlite.GetInt32(2);
-                    int estado = datareader_sqlite.GetInt32(3);
-                    string estadoString = estado == 1 ? "Habilitado" : "desahibilitado";
-
-                    int tipo_usuario = datareader_sqlite.GetInt32(4);
-
-
+                    int Id_producto = datareader_sqlite.GetInt32(0);
+                    string Nombre_producto = datareader_sqlite.GetString(1);
+                    int Cantidad = datareader_sqlite.GetInt32(2);
 
                     //los colocamos en el dgv
-                    dgvInventario.Rows.Add(id_Persona, nombre, cedula, estado, tipo_usuario);
+                    dgvInventario.Rows.Add(Id_producto, Nombre_producto, Cantidad);
 
                 }
                 datareader_sqlite.Close();
