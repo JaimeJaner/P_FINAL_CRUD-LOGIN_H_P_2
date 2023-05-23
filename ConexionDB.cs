@@ -43,14 +43,11 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                 SQLiteCommand cmd_crearTablaUsuario = new SQLiteCommand(queryCrearTablaUsuario, conexion_sqlite);
 
                 //creacion tabla producto
-                string queryCrearTablaProducto = @"CREATE TABLE IF NOT EXISTS tbl_Usuario (
-	                                                Id_persona	INTEGER NOT NULL UNIQUE,
-	                                                Nombre	TEXT NOT NULL,
-	                                                Cedula	INTEGER NOT NULL CHECK(Cedula > 0) UNIQUE,
-	                                                Contraseña	TEXT NOT NULL,
-	                                                Estado	INTEGER NOT NULL CHECK(Estado IN (0, 1)),
-	                                                Tipo_usuario	INTEGER NOT NULL CHECK(Tipo_usuario IN (0, 1)),
-	                                                PRIMARY KEY(Id_persona AUTOINCREMENT)
+                string queryCrearTablaProducto = @"CREATE TABLE IF NOT EXISTS tbl_Producto (
+	                                                Id_producto	INTEGER NOT NULL UNIQUE,
+	                                                Nombre_producto	TEXT NOT NULL,
+	                                                Cantidad INTEGER NOT NULL CHECK(Cantidad > 0),
+	                                                descripcion	TEXT NOT NULL
                                                 );";
                 SQLiteCommand cmd_crearTablaProducto = new SQLiteCommand(queryCrearTablaProducto, conexion_sqlite);
 

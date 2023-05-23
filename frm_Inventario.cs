@@ -253,6 +253,11 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
 
         }
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+
+        }
         //para actualizar/mostrar los datos de la DB por si hay algun cambio, ya sea un create, update, delete o solo si se quiere obtener los elementos
         //este metodo muestra los datos en el dgv ya sea la primera vez o si hay alguna actualizacion
     }
