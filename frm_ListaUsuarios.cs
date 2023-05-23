@@ -209,145 +209,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             ValidarDgv();
         }
 
-
-
-        //creando un dato
-        /*
-        public SQLiteCommand CreateDato()
-        {
-
-            try
-            {
-                SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB();
-                conexionDB.Open();
-
-                float precio;
-
-                if (!string.IsNullOrEmpty(txtPrecioProducto.Text) && !float.TryParse(txtPrecioProducto.Text, out precio))
-                {
-                    MessageBox.Show("Error: el precio debe de ser un valor numerico");
-                    return null;
-                }
-
-                if (txtPrecioProducto.Text.Contains(","))
-                {
-                    MessageBox.Show("Error, no ingrese ',' en el precio");
-                    return null;
-
-                }
-
-                if (!string.IsNullOrEmpty(txtNombreProducto.Text) && !string.IsNullOrEmpty(txtPrecioProducto.Text))
-                {
-
-
-                    //verificamos que el nombre no se repita
-                    string checkUniqueName = string.Format("SELECT COUNT(name) FROM {0} WHERE name=@name", tableName);
-
-                    SQLiteCommand cmd_checkName = new SQLiteCommand(checkUniqueName, conexionDB);
-                    cmd_checkName.Parameters.AddWithValue("@name", txtNombreProducto.Text);
-
-                    if (Convert.ToInt32(cmd_checkName.ExecuteScalar()) > 0)
-                    {
-                        MessageBox.Show("Error el nombre del producto ya existe");
-                        return null;
-                    }
-
-                    //si no se repite entonces creamos el prod
-                    int id = VerificarIDUnico();
-
-                    string createProducto = string.Format("INSERT INTO tbl_product (id, name, price) VALUES(@id, @nombre, @precio);", tableName);
-
-                    SQLiteCommand cmd_createProduct = new SQLiteCommand(createProducto, conexionDB);
-                    cmd_createProduct.Parameters.AddWithValue("@id", id);
-                    cmd_createProduct.Parameters.AddWithValue("@nombre", txtNombreProducto.Text);
-                    cmd_createProduct.Parameters.AddWithValue("@precio", txtPrecioProducto.Text);
-
-                    MessageBox.Show("Producto creado con exito");
-
-
-                    return cmd_createProduct;
-                }
-                else
-                {
-
-                    MessageBox.Show("Por favor ingrese el nombre del producto y su precio");
-
-
-                }
-
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show("Error creando el producto\n" + ex.Message);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-
-            }
-
-
-            return null;
-
-        }
-
-        */
-
-        //llenar comboBox 
-        /*
-        
-
-        //se llena los comboBox con los ids (sirve para el metodo de actualizar y eliminar)
-
-        public void LlenarCombobox(ComboBox comboBox)
-        {
-            //llenamos los combobox con los ids disponibles
-            try
-            {
-                SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB();
-
-                conexionDB.Open();
-                string getIDs = string.Format("SELECT id FROM {0}", tableName);
-
-                SQLiteCommand cmd_getIDs = new SQLiteCommand(getIDs, conexionDB);
-
-                SQLiteDataReader datareader_sqlite = cmd_getIDs.ExecuteReader();
-
-                comboBox.Items.Clear();
-
-
-                while (datareader_sqlite.Read())
-                {
-                    //Obtenemos los ids
-                    int idProd = datareader_sqlite.GetInt32(0);
-
-                    //los colocamos en el comboBox
-                    comboBox.Items.Add(idProd);
-
-                }
-
-
-
-                //MessageBox.Show("El combo box ha sido llenado");
-                datareader_sqlite.Close();
-
-                conexionDB.Close();
-
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show("Error (sql): " + ex);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
-
-
-        }
-
-        */
+     
 
         // UpdateDato
 
@@ -408,31 +270,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             return cmd_actualizar;
         }
 
-        //delete dato
-        /*
-        public int DeleteDato()
-        {
-            string queryEliminarProducto = string.Format("delete from {0} where id=@id", tableName);
-
-            using (SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB())
-            {
-                conexionDB.Open();
-                using (SQLiteCommand cmd_DeleteDato = new SQLiteCommand(queryEliminarProducto, conexionDB))
-                {
-                    if (cbProdAEliminar.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("Error, selecciona un ID para eliminar un producto");
-                        return 0;
-                    }
-
-                    cmd_DeleteDato.Parameters.AddWithValue("@id", Convert.ToInt32(cbProdAEliminar.SelectedItem.ToString()));
-                    int filasAfectadas = cmd_DeleteDato.ExecuteNonQuery();
-                    return filasAfectadas;
-                }
-            }
-        }
-
-        */
+        
 
 
         //pa que vaya a la pagina principal
@@ -466,6 +304,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
 
             GetDatoByCedula(Convert.ToInt32(txtBuscarUsuario.Text));
+            //txtBuscarUsuario.Text = string.Empty;
         }
 
 
