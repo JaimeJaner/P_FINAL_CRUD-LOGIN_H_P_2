@@ -42,7 +42,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.lbl_IniciarSesion.AutoSize = true;
             this.lbl_IniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_IniciarSesion.Location = new System.Drawing.Point(247, 70);
+            this.lbl_IniciarSesion.Location = new System.Drawing.Point(199, 84);
             this.lbl_IniciarSesion.Name = "lbl_IniciarSesion";
             this.lbl_IniciarSesion.Size = new System.Drawing.Size(409, 73);
             this.lbl_IniciarSesion.TabIndex = 47;
@@ -62,9 +62,9 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.lbl_SiUsuario.AutoSize = true;
             this.lbl_SiUsuario.Location = new System.Drawing.Point(308, 206);
             this.lbl_SiUsuario.Name = "lbl_SiUsuario";
-            this.lbl_SiUsuario.Size = new System.Drawing.Size(43, 13);
+            this.lbl_SiUsuario.Size = new System.Drawing.Size(94, 13);
             this.lbl_SiUsuario.TabIndex = 45;
-            this.lbl_SiUsuario.Text = "Usuario";
+            this.lbl_SiUsuario.Text = "Cédula de Usuario";
             // 
             // txt_Contraseña
             // 

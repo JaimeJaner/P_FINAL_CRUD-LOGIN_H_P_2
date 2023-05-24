@@ -8,8 +8,10 @@ using System.Windows.Forms;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
+   
     public class ConexionDB
     {
+        public string CedulaUsuario = "";
         private string nombreDB;
         public ConexionDB(string _nombreDB)
         {

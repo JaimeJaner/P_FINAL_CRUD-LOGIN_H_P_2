@@ -11,6 +11,7 @@ using System.Data.SQLite;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
+    
     public partial class frm_SignIn : Form
     {
         public int intentos;
@@ -66,10 +67,13 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                     {
                         //En caso de coincidir contraseña + usuario, se inicia sesión.
                         MessageBox.Show("Bienvenido " + txt_Usuario.Text + ".");
-
+                        Global.UsuarioGlobal = txt_Usuario.Text;
                         frm_Principal Principal = new frm_Principal();
                         Principal.Show();
+                        
                         Hide();
+                        
+                        
                     }
                     else
                     {

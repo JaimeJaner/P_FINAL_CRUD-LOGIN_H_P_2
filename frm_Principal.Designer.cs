@@ -33,6 +33,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btn_Inventario = new System.Windows.Forms.Button();
             this.btn_Entregas = new System.Windows.Forms.Button();
             this.btn_CerrarSesion = new System.Windows.Forms.Button();
+            this.lbl_Usuario = new System.Windows.Forms.Label();
+            this.lbl_NombreUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_ListaUsuarios
@@ -75,11 +77,31 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btn_CerrarSesion.UseVisualStyleBackColor = true;
             this.btn_CerrarSesion.Click += new System.EventHandler(this.btn_CerrarSesion_Click);
             // 
+            // lbl_Usuario
+            // 
+            this.lbl_Usuario.AutoSize = true;
+            this.lbl_Usuario.Location = new System.Drawing.Point(567, 35);
+            this.lbl_Usuario.Name = "lbl_Usuario";
+            this.lbl_Usuario.Size = new System.Drawing.Size(49, 13);
+            this.lbl_Usuario.TabIndex = 4;
+            this.lbl_Usuario.Text = "Usuario: ";
+            // 
+            // lbl_NombreUsuario
+            // 
+            this.lbl_NombreUsuario.AutoSize = true;
+            this.lbl_NombreUsuario.Location = new System.Drawing.Point(622, 35);
+            this.lbl_NombreUsuario.Name = "lbl_NombreUsuario";
+            this.lbl_NombreUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lbl_NombreUsuario.TabIndex = 5;
+            this.lbl_NombreUsuario.Text = "label1";
+            // 
             // frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_NombreUsuario);
+            this.Controls.Add(this.lbl_Usuario);
             this.Controls.Add(this.btn_CerrarSesion);
             this.Controls.Add(this.btn_Entregas);
             this.Controls.Add(this.btn_Inventario);
@@ -88,6 +110,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_Principal";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -97,5 +120,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private System.Windows.Forms.Button btn_Inventario;
         private System.Windows.Forms.Button btn_Entregas;
         private System.Windows.Forms.Button btn_CerrarSesion;
+        private System.Windows.Forms.Label lbl_Usuario;
+        private System.Windows.Forms.Label lbl_NombreUsuario;
     }
 }

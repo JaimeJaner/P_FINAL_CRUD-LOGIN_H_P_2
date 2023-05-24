@@ -46,7 +46,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.lbl_Registro.AutoSize = true;
             this.lbl_Registro.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Registro.Location = new System.Drawing.Point(280, 9);
+            this.lbl_Registro.Location = new System.Drawing.Point(255, 67);
             this.lbl_Registro.Name = "lbl_Registro";
             this.lbl_Registro.Size = new System.Drawing.Size(279, 73);
             this.lbl_Registro.TabIndex = 52;
@@ -55,7 +55,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // btn_Atras
             // 
             this.btn_Atras.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Atras.Location = new System.Drawing.Point(285, 354);
+            this.btn_Atras.Location = new System.Drawing.Point(285, 372);
             this.btn_Atras.Name = "btn_Atras";
             this.btn_Atras.Size = new System.Drawing.Size(210, 21);
             this.btn_Atras.TabIndex = 51;
@@ -66,7 +66,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // lbl_confirmar
             // 
             this.lbl_confirmar.AutoSize = true;
-            this.lbl_confirmar.Location = new System.Drawing.Point(282, 258);
+            this.lbl_confirmar.Location = new System.Drawing.Point(282, 276);
             this.lbl_confirmar.Name = "lbl_confirmar";
             this.lbl_confirmar.Size = new System.Drawing.Size(108, 13);
             this.lbl_confirmar.TabIndex = 50;
@@ -74,7 +74,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             // txt_Confirmar
             // 
-            this.txt_Confirmar.Location = new System.Drawing.Point(285, 274);
+            this.txt_Confirmar.Location = new System.Drawing.Point(285, 292);
             this.txt_Confirmar.Name = "txt_Confirmar";
             this.txt_Confirmar.PasswordChar = '*';
             this.txt_Confirmar.Size = new System.Drawing.Size(210, 20);
@@ -83,7 +83,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // lbl_Password
             // 
             this.lbl_Password.AutoSize = true;
-            this.lbl_Password.Location = new System.Drawing.Point(282, 219);
+            this.lbl_Password.Location = new System.Drawing.Point(282, 237);
             this.lbl_Password.Name = "lbl_Password";
             this.lbl_Password.Size = new System.Drawing.Size(61, 13);
             this.lbl_Password.TabIndex = 48;
@@ -92,7 +92,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // lbl_User
             // 
             this.lbl_User.AutoSize = true;
-            this.lbl_User.Location = new System.Drawing.Point(282, 180);
+            this.lbl_User.Location = new System.Drawing.Point(282, 198);
             this.lbl_User.Name = "lbl_User";
             this.lbl_User.Size = new System.Drawing.Size(79, 13);
             this.lbl_User.TabIndex = 47;
@@ -100,7 +100,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             // txt_Password
             // 
-            this.txt_Password.Location = new System.Drawing.Point(285, 235);
+            this.txt_Password.Location = new System.Drawing.Point(285, 253);
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.PasswordChar = '*';
             this.txt_Password.Size = new System.Drawing.Size(210, 20);
@@ -108,7 +108,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             // txt_User
             // 
-            this.txt_User.Location = new System.Drawing.Point(285, 196);
+            this.txt_User.Location = new System.Drawing.Point(285, 214);
             this.txt_User.Name = "txt_User";
             this.txt_User.Size = new System.Drawing.Size(210, 20);
             this.txt_User.TabIndex = 45;
@@ -116,7 +116,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // btn_Registro
             // 
             this.btn_Registro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Registro.Location = new System.Drawing.Point(285, 315);
+            this.btn_Registro.Location = new System.Drawing.Point(285, 333);
             this.btn_Registro.Name = "btn_Registro";
             this.btn_Registro.Size = new System.Drawing.Size(210, 21);
             this.btn_Registro.TabIndex = 44;
@@ -127,7 +127,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // lbl_Nombre
             // 
             this.lbl_Nombre.AutoSize = true;
-            this.lbl_Nombre.Location = new System.Drawing.Point(282, 142);
+            this.lbl_Nombre.Location = new System.Drawing.Point(282, 160);
             this.lbl_Nombre.Name = "lbl_Nombre";
             this.lbl_Nombre.Size = new System.Drawing.Size(44, 13);
             this.lbl_Nombre.TabIndex = 55;
@@ -135,7 +135,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             // txt_Nombre
             // 
-            this.txt_Nombre.Location = new System.Drawing.Point(285, 158);
+            this.txt_Nombre.Location = new System.Drawing.Point(285, 176);
             this.txt_Nombre.Name = "txt_Nombre";
             this.txt_Nombre.Size = new System.Drawing.Size(210, 20);
             this.txt_Nombre.TabIndex = 53;

@@ -16,6 +16,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         public frm_Principal()
         {
             InitializeComponent();
+            lbl_NombreUsuario.Text = Global.UsuarioGlobal;
         }
 
         private void btn_CerrarSesion_Click(object sender, EventArgs e)
