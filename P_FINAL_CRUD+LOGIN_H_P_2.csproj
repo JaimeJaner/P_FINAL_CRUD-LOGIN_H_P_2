@@ -109,6 +109,7 @@
     <Compile Include="frm_SignUp.Designer.cs">
       <DependentUpon>frm_SignUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_Entrega.resx">
