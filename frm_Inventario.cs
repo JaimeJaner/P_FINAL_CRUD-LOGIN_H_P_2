@@ -41,6 +41,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 try
                 {
+                 
                     //Conexion a la base de datos
                     conexion_sqlite = new SQLiteConnection("Data Source=DB_DonacionesSA.db;Version=3;");
 
@@ -49,12 +50,20 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
                     cmd_sqlite = conexion_sqlite.CreateCommand();
 
+                    string nombreProducto = txtNombre.Text.Trim();
+                    SQLiteCommand cmd_verificar = new SQLiteCommand("SELECT COUNT(*) FROM tbl_Producto WHERE Nombre_producto = @Nombre", conexion_sqlite);
+                    cmd_verificar.Parameters.AddWithValue("@Nombre", nombreProducto);
+                    int count = Convert.ToInt32(cmd_verificar.ExecuteScalar());
+                    if (count > 0)
+                    {
+                        MessageBox.Show("El nombre del producto ya existe");
+                        return;
+                    }
 
                     //Insertando valores, no se inserta el id ya que es auto incrementable
                     cmd_sqlite.CommandText = string.Format("INSERT INTO tbl_Producto (Nombre_producto, Cantidad) VALUES ('" + txtNombre.Text + "', " + txtCant.Text + ")");
-
+                    cmd_sqlite.ExecuteNonQuery();   
                     MessageBox.Show("Registrado Correctamente");
-
                 }
                 catch (Exception iu)
                 {
@@ -66,10 +75,12 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Por favor llene los campos");
             }
+            txtCant.Clear();
+            txtNombre.Clear();
             UpdateDgv();
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
+        private void btnActualizar_Click_1(object sender, EventArgs e)
         {
             if (txtNombre.Text.Trim() != "" && txtCant.Text.Trim() != "")
             {
@@ -91,8 +102,9 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
 
                     //Insertando valores, no se inserta el id ya que es auto incrementable
-                    SQLiteCommand cmd = new SQLiteCommand("UPDATE tbl_Producto SET Nombre_producto=@Nombre WHERE Nombre_producto=@Nombre", conexion_sqlite);
+                    SQLiteCommand cmd = new SQLiteCommand("UPDATE tbl_Producto SET Nombre_producto=@Nombre, Cantidad=@Cantidad WHERE Id_producto=@ID", conexion_sqlite);
                     cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                    cmd.Parameters.AddWithValue("@ID", txtId.Text);
 
                     cmd.ExecuteNonQuery();
                     conexion_sqlite.Close();
@@ -110,10 +122,13 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Por favor llene los campos");
             }
+            txtCant.Clear();
+            txtNombre.Clear();
+            txtId.Clear();
             UpdateDgv();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             //Codigo para eliminar datos de la tabla
 
@@ -143,30 +158,82 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Por favor llene los campos");
             }
+            txtNombre.Clear();
+            txtCant.Clear();
             UpdateDgv();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            conexion_sqlite = new SQLiteConnection("Data Source=DB_DonacionesSA.db;Version=3;");
-            conexion_sqlite.Open();
+            if (string.IsNullOrEmpty(txtBuscar.Text))
+            {
+                MessageBox.Show("Ingrese la cédula a buscar");
+                return;
+            }
+            GetDatoByCedula(txtBuscar.Text);
+            txtBuscar.Clear();
+        }
 
-            if (txtBuscar.Text.Trim() != "")
+        public void GetDatoByCedula(string _nom)
+        {
+            try
             {
-                SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM tbl_Producto WHERE Id_producto=@ID", conexion_sqlite);
-                cmd.Parameters.AddWithValue("@ID", txtBuscar);
-                cmd.ExecuteNonQuery();
-                conexion_sqlite.Close();
+                SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB();
+                //se abre conexionDB (se cierra en UpdateDgv)
+                conexionDB.Open();
+
+                string getData = string.Format("SELECT Id_producto, Nombre_producto, Cantidad FROM {0} WHERE Nombre_producto=@Nombre;", tableName);
+
+
+                SQLiteCommand cmd_getData = new SQLiteCommand(getData, conexionDB);
+                cmd_getData.Parameters.AddWithValue("@Nombre", _nom);
+
+                if (Convert.ToInt32(cmd_getData.ExecuteScalar()) < 1)
+                {
+                    MessageBox.Show("Error, producto no encontrado");
+                    return;
+                }
+
+                //si la cedula se encuentra se ejecuta de aqui hacia abajo
+                SQLiteDataReader datareader_sqlite = cmd_getData.ExecuteReader();
+
+
+                dgvInventario.Rows.Clear();
+                dgvInventario.Columns.Clear();
+
+                dgvInventario.Columns.Add("Id_producto", "ID");
+                dgvInventario.Columns.Add("Nombre_producto", "Nombre");
+                dgvInventario.Columns.Add("Cantidad", "Cantidad");
+
+                while (datareader_sqlite.Read())
+                {
+                    //Obtenemos los datos
+                    int Id_producto = datareader_sqlite.GetInt32(0);
+                    string Nombre_producto = datareader_sqlite.GetString(1);
+                    int Cantidad = datareader_sqlite.GetInt32(2);
+
+                    //los colocamos en el dgv
+                    dgvInventario.Rows.Add(Id_producto, Nombre_producto, Cantidad);
+
+                }
+                datareader_sqlite.Close();
+                conexionDB.Close();
             }
-            else
+            catch (SQLiteException ex)
             {
-                MessageBox.Show("Por favor llene los campos");
+                MessageBox.Show("Error obteniendo los datos desde la base de datos\n" + ex.Message);
+
             }
-            UpdateDgv();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+
+            }
         }
 
         private void frm_Inventario_Load(object sender, EventArgs e)
         {
+            //Al entrar al form inmediatamente muestra los datos de la DB
             UpdateDgv();
         }
 
@@ -257,6 +324,33 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private void btnImportar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // sirve para ignorar el carácter ingresado (número)
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void txtCant_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // sirve para ignorar el carácter ingresado (letras)
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // sirve para ignorar el carácter ingresado (número)
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
         //para actualizar/mostrar los datos de la DB por si hay algun cambio, ya sea un create, update, delete o solo si se quiere obtener los elementos
         //este metodo muestra los datos en el dgv ya sea la primera vez o si hay alguna actualizacion
