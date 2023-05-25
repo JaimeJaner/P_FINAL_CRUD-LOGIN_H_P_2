@@ -220,7 +220,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         public SQLiteCommand UpdateDato()
         {
             string queryActualizar = "";
-
+        
+            
 
             SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB();
             conexionDB.Open();
@@ -245,6 +246,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             else
             {
                 MessageBox.Show("Ingrese el nuevo estado y/o el nuevo tipo de usuario");
+                return null;
                 
             }
 
@@ -256,6 +258,12 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                 MessageBox.Show("Debe de seleccionar un usuario (por su cédula) para actualizarle los datos");
                 return null;
 
+            }
+           
+
+            if (Convert.ToInt32(txtBuscarUsuario.Text) == 777) {
+                MessageBox.Show("Error no tiene permisos para modificar al Administrador principal");
+                return null;
             }
 
             cmd_actualizar.Parameters.AddWithValue("@Cedula", Convert.ToInt32(txtBuscarUsuario.Text));
@@ -269,6 +277,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 cmd_actualizar.Parameters.AddWithValue("@Tipo_usuario", cbTipoUsuario.SelectedItem.ToString() == "Administrador" ? 1 : 0);
             }
+
             
 
             return cmd_actualizar;
@@ -333,18 +342,13 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                     }
                     else
                     {
-                        MessageBox.Show("El usuario no existe");
+                        MessageBox.Show("El usuario no existe o no se modificó ningun registro");
 
                     }
 
                     UpdateDgv();
                 }
-                else
-                {
-
-                    MessageBox.Show("Error al modificar al usuario");
-
-                }
+               
 
                 conexionDB.Close();
             }

@@ -59,7 +59,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btn_Atras.Location = new System.Drawing.Point(12, 12);
             this.btn_Atras.Name = "btn_Atras";
             this.btn_Atras.Size = new System.Drawing.Size(54, 49);
-            this.btn_Atras.TabIndex = 0;
+            this.btn_Atras.TabIndex = 12;
             this.btn_Atras.Text = "ATRÁS";
             this.btn_Atras.UseVisualStyleBackColor = true;
             this.btn_Atras.Click += new System.EventHandler(this.btn_Atras_Click);
@@ -79,7 +79,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.txtBuscarUsuario.Location = new System.Drawing.Point(12, 145);
             this.txtBuscarUsuario.Name = "txtBuscarUsuario";
             this.txtBuscarUsuario.Size = new System.Drawing.Size(123, 20);
-            this.txtBuscarUsuario.TabIndex = 2;
+            this.txtBuscarUsuario.TabIndex = 0;
             this.txtBuscarUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarUsuario_KeyPress);
             // 
             // lblBucarUsuario
@@ -114,7 +114,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btnActualizar.Location = new System.Drawing.Point(36, 321);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(85, 32);
-            this.btnActualizar.TabIndex = 8;
+            this.btnActualizar.TabIndex = 4;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
@@ -124,7 +124,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btnBuscar.Location = new System.Drawing.Point(141, 145);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(49, 20);
-            this.btnBuscar.TabIndex = 9;
+            this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -153,7 +153,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.dgvUsuarios.Location = new System.Drawing.Point(227, 111);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.Size = new System.Drawing.Size(570, 288);
-            this.dgvUsuarios.TabIndex = 12;
+            this.dgvUsuarios.TabIndex = 13;
             // 
             // cbEstado
             // 
@@ -161,7 +161,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.cbEstado.Location = new System.Drawing.Point(14, 206);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(121, 21);
-            this.cbEstado.TabIndex = 13;
+            this.cbEstado.TabIndex = 2;
             // 
             // cbTipoUsuario
             // 
@@ -169,7 +169,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.cbTipoUsuario.Location = new System.Drawing.Point(16, 274);
             this.cbTipoUsuario.Name = "cbTipoUsuario";
             this.cbTipoUsuario.Size = new System.Drawing.Size(121, 21);
-            this.cbTipoUsuario.TabIndex = 14;
+            this.cbTipoUsuario.TabIndex = 3;
             // 
             // lblTitulo
             // 
@@ -186,7 +186,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btnVerTodo.Location = new System.Drawing.Point(475, 405);
             this.btnVerTodo.Name = "btnVerTodo";
             this.btnVerTodo.Size = new System.Drawing.Size(85, 32);
-            this.btnVerTodo.TabIndex = 15;
+            this.btnVerTodo.TabIndex = 7;
             this.btnVerTodo.Text = "Ver todo";
             this.btnVerTodo.UseVisualStyleBackColor = true;
             this.btnVerTodo.Click += new System.EventHandler(this.btnVerTodo_Click);
@@ -198,7 +198,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.BtnFinal.Location = new System.Drawing.Point(621, 407);
             this.BtnFinal.Name = "BtnFinal";
             this.BtnFinal.Size = new System.Drawing.Size(49, 31);
-            this.BtnFinal.TabIndex = 27;
+            this.BtnFinal.TabIndex = 9;
             this.BtnFinal.Text = ">>";
             this.BtnFinal.UseVisualStyleBackColor = true;
             this.BtnFinal.Click += new System.EventHandler(this.BtnFinal_Click);
@@ -210,7 +210,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.BtnSiguiente.Location = new System.Drawing.Point(566, 407);
             this.BtnSiguiente.Name = "BtnSiguiente";
             this.BtnSiguiente.Size = new System.Drawing.Size(49, 31);
-            this.BtnSiguiente.TabIndex = 26;
+            this.BtnSiguiente.TabIndex = 8;
             this.BtnSiguiente.Text = ">";
             this.BtnSiguiente.UseVisualStyleBackColor = true;
             this.BtnSiguiente.Click += new System.EventHandler(this.BtnSiguiente_Click);
@@ -222,7 +222,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.BtnAtras.Location = new System.Drawing.Point(420, 407);
             this.BtnAtras.Name = "BtnAtras";
             this.BtnAtras.Size = new System.Drawing.Size(49, 31);
-            this.BtnAtras.TabIndex = 25;
+            this.BtnAtras.TabIndex = 6;
             this.BtnAtras.Text = "<";
             this.BtnAtras.UseVisualStyleBackColor = true;
             this.BtnAtras.Click += new System.EventHandler(this.BtnAtras_Click);
@@ -234,7 +234,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.BtnPrincipio.Location = new System.Drawing.Point(365, 407);
             this.BtnPrincipio.Name = "BtnPrincipio";
             this.BtnPrincipio.Size = new System.Drawing.Size(49, 31);
-            this.BtnPrincipio.TabIndex = 24;
+            this.BtnPrincipio.TabIndex = 5;
             this.BtnPrincipio.Text = "<<";
             this.BtnPrincipio.UseVisualStyleBackColor = true;
             this.BtnPrincipio.Click += new System.EventHandler(this.BtnPrincipio_Click);
