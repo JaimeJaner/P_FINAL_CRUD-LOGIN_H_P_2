@@ -48,6 +48,9 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.BtnSiguiente = new System.Windows.Forms.Button();
             this.BtnAtras = new System.Windows.Forms.Button();
             this.BtnPrincipio = new System.Windows.Forms.Button();
+            this.lbl_TipoUsuario = new System.Windows.Forms.Label();
+            this.lbl_NombreUsuario = new System.Windows.Forms.Label();
+            this.lbl_Usuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -236,11 +239,41 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.BtnPrincipio.UseVisualStyleBackColor = true;
             this.BtnPrincipio.Click += new System.EventHandler(this.BtnPrincipio_Click);
             // 
+            // lbl_TipoUsuario
+            // 
+            this.lbl_TipoUsuario.AutoSize = true;
+            this.lbl_TipoUsuario.Location = new System.Drawing.Point(103, 29);
+            this.lbl_TipoUsuario.Name = "lbl_TipoUsuario";
+            this.lbl_TipoUsuario.Size = new System.Drawing.Size(28, 13);
+            this.lbl_TipoUsuario.TabIndex = 36;
+            this.lbl_TipoUsuario.Text = "Tipo";
+            // 
+            // lbl_NombreUsuario
+            // 
+            this.lbl_NombreUsuario.AutoSize = true;
+            this.lbl_NombreUsuario.Location = new System.Drawing.Point(153, 12);
+            this.lbl_NombreUsuario.Name = "lbl_NombreUsuario";
+            this.lbl_NombreUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lbl_NombreUsuario.TabIndex = 35;
+            this.lbl_NombreUsuario.Text = "label2";
+            // 
+            // lbl_Usuario
+            // 
+            this.lbl_Usuario.AutoSize = true;
+            this.lbl_Usuario.Location = new System.Drawing.Point(101, 12);
+            this.lbl_Usuario.Name = "lbl_Usuario";
+            this.lbl_Usuario.Size = new System.Drawing.Size(46, 13);
+            this.lbl_Usuario.TabIndex = 34;
+            this.lbl_Usuario.Text = "Usuario:";
+            // 
             // frm_ListaUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_TipoUsuario);
+            this.Controls.Add(this.lbl_NombreUsuario);
+            this.Controls.Add(this.lbl_Usuario);
             this.Controls.Add(this.BtnFinal);
             this.Controls.Add(this.BtnSiguiente);
             this.Controls.Add(this.BtnAtras);
@@ -291,5 +324,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private System.Windows.Forms.Button BtnSiguiente;
         private System.Windows.Forms.Button BtnAtras;
         private System.Windows.Forms.Button BtnPrincipio;
+        private System.Windows.Forms.Label lbl_TipoUsuario;
+        private System.Windows.Forms.Label lbl_NombreUsuario;
+        private System.Windows.Forms.Label lbl_Usuario;
     }
 }

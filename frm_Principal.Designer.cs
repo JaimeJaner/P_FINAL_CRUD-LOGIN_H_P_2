@@ -35,6 +35,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btn_CerrarSesion = new System.Windows.Forms.Button();
             this.lbl_Usuario = new System.Windows.Forms.Label();
             this.lbl_NombreUsuario = new System.Windows.Forms.Label();
+            this.lbl_TipoUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_ListaUsuarios
@@ -95,11 +96,21 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.lbl_NombreUsuario.TabIndex = 5;
             this.lbl_NombreUsuario.Text = "label1";
             // 
+            // lbl_TipoUsuario
+            // 
+            this.lbl_TipoUsuario.AutoSize = true;
+            this.lbl_TipoUsuario.Location = new System.Drawing.Point(597, 59);
+            this.lbl_TipoUsuario.Name = "lbl_TipoUsuario";
+            this.lbl_TipoUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lbl_TipoUsuario.TabIndex = 6;
+            this.lbl_TipoUsuario.Text = "label1";
+            // 
             // frm_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_TipoUsuario);
             this.Controls.Add(this.lbl_NombreUsuario);
             this.Controls.Add(this.lbl_Usuario);
             this.Controls.Add(this.btn_CerrarSesion);
@@ -109,6 +120,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.Name = "frm_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_Principal";
+            this.Load += new System.EventHandler(this.frm_Principal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,5 +134,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private System.Windows.Forms.Button btn_CerrarSesion;
         private System.Windows.Forms.Label lbl_Usuario;
         private System.Windows.Forms.Label lbl_NombreUsuario;
+        private System.Windows.Forms.Label lbl_TipoUsuario;
     }
 }

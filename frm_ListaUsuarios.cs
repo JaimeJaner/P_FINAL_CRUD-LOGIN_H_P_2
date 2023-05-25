@@ -33,6 +33,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
             cbTipoUsuario.Items.Add("Administrador");
             cbTipoUsuario.Items.Add("Empleado");
+
+            //Pone el tipo de usuario que está conectado en la aplicación.
+            lbl_TipoUsuario.Text = Global.TipoUsuario;
+            lbl_NombreUsuario.Text = Global.UsuarioGlobal;
         }
 
         //se obtienen los datos de la DB

@@ -29,10 +29,12 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
         private void btn_IniciarSesion_Click(object sender, EventArgs e)
         {
+            //Verificamos que los campos estén completos.
             if (txt_Usuario.Text.Trim()=="" || txt_Contraseña.Text.Trim()=="")
             {
                 MessageBox.Show("Por favor rellene todos los campos.");
             }
+            //En caso de que sí...
             else
             {
 
@@ -52,11 +54,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
                     //Creando el comando SQL
                     cmd_sqlite = conexion_sqlite.CreateCommand();
-
-
-                    //cmd_sqlite.CommandText = string.Format("SELECT * FROM tbl_login WHERE usuario='{0}' AND contraseña='{1}'", txt_Usuario.Text.ToString(), txt_Contraseña.Text.ToString());
-                    //
                     //En ésta línea, creamos un comando que recibe un string.
+
                     cmd_sqlite.CommandText = string.Format("SELECT COUNT(*) FROM tbl_Usuario WHERE Cedula= {0} AND Contraseña='{1}'", txt_Usuario.Text, txt_Contraseña.Text);
 
                     //Recibimos el número de filas afectada, 1 si existe, 0 si no existe el loggin.
@@ -65,15 +64,27 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
                     if (count > 0)
                     {
-                        //En caso de coincidir contraseña + usuario, se inicia sesión.
-                        MessageBox.Show("Bienvenido " + txt_Usuario.Text + ".");
-                        Global.UsuarioGlobal = txt_Usuario.Text;
-                        frm_Principal Principal = new frm_Principal();
-                        Principal.Show();
-                        
-                        Hide();
-                        
-                        
+                        //Una vez verificado el loggin existente, verificamos si su cuenta está o no activa.
+
+                        cmd_sqlite.CommandText = string.Format("SELECT Estado FROM tbl_Usuario WHERE Cedula = {0}", txt_Usuario.Text);
+                        object result = cmd_sqlite.ExecuteScalar();
+                        int estado = Convert.ToInt32(result);
+
+                        if(estado == 0)
+                        {
+                                MessageBox.Show("Su cuenta se encuentra desactivada, comuníquese con el administrador");
+                        }
+                        else 
+                        {
+                            //En caso de estar activa, (Estado ==1), inicia sesión correctamente.
+
+                           //MessageBox.Show("El estado es: " + estado);
+                            MessageBox.Show("Bienvenido " + txt_Usuario.Text + ".");
+                            Global.UsuarioGlobal = txt_Usuario.Text;
+                            frm_Principal Principal = new frm_Principal();
+                            Principal.Show();
+                            Hide();
+                        }  
                     }
                     else
                     {
@@ -84,7 +95,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                         {
                             MessageBox.Show("Ha superado el límite de intentos.");
                             Application.Exit();
-
                         }
 
                         MessageBox.Show("El usuario o la contraseña estan incorrectas");
@@ -92,8 +102,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
                     //Bien sea que iniciemos sesión o no, finalizamos cerrando la base de datos y limpiamos los campos de texto.
                     conexion_sqlite.Close();
-
-
                     txt_Usuario.Clear();
                     txt_Contraseña.Clear();
                 }
@@ -101,9 +109,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                 {
                     MessageBox.Show("Error al registrar al usuario " + err);
                 }
-
             }
-
         }
 
         private void txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)

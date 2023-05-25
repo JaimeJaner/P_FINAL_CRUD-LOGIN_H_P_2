@@ -39,6 +39,9 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnEntregar = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lbl_TipoUsuario = new System.Windows.Forms.Label();
+            this.lbl_NombreUsuario = new System.Windows.Forms.Label();
+            this.lbl_Usuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntregados)).BeginInit();
             this.SuspendLayout();
@@ -129,11 +132,41 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.textBox2.TabIndex = 10;
             this.textBox2.Text = "Cantidad";
             // 
+            // lbl_TipoUsuario
+            // 
+            this.lbl_TipoUsuario.AutoSize = true;
+            this.lbl_TipoUsuario.Location = new System.Drawing.Point(76, 29);
+            this.lbl_TipoUsuario.Name = "lbl_TipoUsuario";
+            this.lbl_TipoUsuario.Size = new System.Drawing.Size(28, 13);
+            this.lbl_TipoUsuario.TabIndex = 36;
+            this.lbl_TipoUsuario.Text = "Tipo";
+            // 
+            // lbl_NombreUsuario
+            // 
+            this.lbl_NombreUsuario.AutoSize = true;
+            this.lbl_NombreUsuario.Location = new System.Drawing.Point(126, 12);
+            this.lbl_NombreUsuario.Name = "lbl_NombreUsuario";
+            this.lbl_NombreUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lbl_NombreUsuario.TabIndex = 35;
+            this.lbl_NombreUsuario.Text = "label2";
+            // 
+            // lbl_Usuario
+            // 
+            this.lbl_Usuario.AutoSize = true;
+            this.lbl_Usuario.Location = new System.Drawing.Point(74, 12);
+            this.lbl_Usuario.Name = "lbl_Usuario";
+            this.lbl_Usuario.Size = new System.Drawing.Size(46, 13);
+            this.lbl_Usuario.TabIndex = 34;
+            this.lbl_Usuario.Text = "Usuario:";
+            // 
             // frm_Entrega
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_TipoUsuario);
+            this.Controls.Add(this.lbl_NombreUsuario);
+            this.Controls.Add(this.lbl_Usuario);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.btnEntregar);
             this.Controls.Add(this.textBox1);
@@ -167,5 +200,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnEntregar;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lbl_TipoUsuario;
+        private System.Windows.Forms.Label lbl_NombreUsuario;
+        private System.Windows.Forms.Label lbl_Usuario;
     }
 }

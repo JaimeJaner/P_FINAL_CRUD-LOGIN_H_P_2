@@ -25,6 +25,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         public frm_Entrega()
         {
             InitializeComponent();
+            lbl_NombreUsuario.Text = Global.UsuarioGlobal;
         }
 
         private void btn_Atras_Click(object sender, EventArgs e)
@@ -38,7 +39,13 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         {
             UpdateDgv();
 
+            lbl_NombreUsuario.Text = Global.UsuarioGlobal;
+            lbl_TipoUsuario.Text = Global.TipoUsuario;
 
+            if (lbl_TipoUsuario.Text == "Empleado")
+            {
+                btnCargar.Enabled = false;
+            }
         }
         //se obtienen los datos de la DB
         public SQLiteCommand GetDatos()

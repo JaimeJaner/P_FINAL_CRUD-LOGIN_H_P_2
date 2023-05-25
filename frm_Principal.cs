@@ -46,5 +46,48 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             LU.Show();
             Hide();
         }
+
+        private void frm_Principal_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                //Creamos los objetos necesarios para la conexión y ejecución de la base de datos.
+                SQLiteConnection conexion_sqlite;
+                SQLiteCommand cmd_sqlite;
+                SQLiteDataReader datareader_sqlite;
+
+                //Crear una nueva conexión de la base de datos
+                conexion_sqlite = new SQLiteConnection("Data Source=DB_DonacionesSA.db;Version=3;Compress=True;");
+
+                //Abriremos la conexión
+                conexion_sqlite.Open();
+
+                //Creando el comando SQL
+                cmd_sqlite = conexion_sqlite.CreateCommand();
+                //En ésta línea, creamos un comando que recibe un string.
+
+                cmd_sqlite.CommandText = string.Format("SELECT Tipo_usuario FROM tbl_Usuario WHERE Cedula = {0}", lbl_NombreUsuario.Text);
+                object result = cmd_sqlite.ExecuteScalar();
+                int estado = Convert.ToInt32(result);
+
+                if (estado == 0)
+                {
+                    btn_ListaUsuarios.Enabled = false;
+                    lbl_TipoUsuario.Text = "Empleado";
+                    Global.TipoUsuario = "Empleado";
+                }
+                else
+                {
+                    lbl_TipoUsuario.Text = "Administrador";
+                    Global.TipoUsuario = "Administrador";
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private static string tableName = "tbl_Producto";
         public frm_Inventario()
         {
-            InitializeComponent();
+            InitializeComponent();       
         }
 
         private void btn_Atras_Click(object sender, EventArgs e)
@@ -235,6 +235,15 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         {
             //Al entrar al form inmediatamente muestra los datos de la DB
             UpdateDgv();
+            lbl_NombreUsuario.Text = Global.UsuarioGlobal;
+            lbl_TipoUsuario.Text = Global.TipoUsuario;
+
+            if(lbl_TipoUsuario.Text=="Empleado")
+            {
+                btnEliminar.Enabled = false;
+                btnActualizar.Enabled = false;
+            }
+           
         }
 
         //se obtienen los datos de la DB
