@@ -1,0 +1,7 @@
+Id_persona,Nombre,Cedula,Contraseña,Estado,Tipo_usuario
+1,admin,777,admin,1,1
+2,Jaime,123,123,1,0
+3,Jaime,1234,123,1,0
+4,Juan,147,juan,1,0
+5,Pablo,741,pablo,1,0
+10,Prueba,555,prueba,0,1

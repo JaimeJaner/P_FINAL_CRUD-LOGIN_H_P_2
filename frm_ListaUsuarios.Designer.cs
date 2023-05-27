@@ -137,6 +137,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btnImportar.TabIndex = 10;
             this.btnImportar.Text = "Importar";
             this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
             // btnExportar
             // 
@@ -146,6 +147,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btnExportar.TabIndex = 11;
             this.btnExportar.Text = "Exportar";
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // dgvUsuarios
             // 

@@ -1,13 +1,11 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
@@ -16,7 +14,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
         private static string DBName = "DB_DonacionesSA";
         private static string tableName = "tbl_Usuario";
-       
+
 
         public frm_ListaUsuarios()
         {
@@ -75,8 +73,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
         }
 
-       
-        
+
+
 
         //para actualizar/mostrar los datos de la DB por si hay algun cambio, ya sea un create, update, delete o solo si se quiere obtener los elementos
         //este metodo muestra los datos en el dgv ya sea la primera vez o si hay alguna actualizacion
@@ -155,7 +153,8 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                 SQLiteCommand cmd_getData = new SQLiteCommand(getData, conexionDB);
                 cmd_getData.Parameters.AddWithValue("@Cedula", _cedula);
 
-                if (Convert.ToInt32(cmd_getData.ExecuteScalar()) < 1) {
+                if (Convert.ToInt32(cmd_getData.ExecuteScalar()) < 1)
+                {
                     MessageBox.Show("Error, cédula no encontrada");
                     return;
                 }
@@ -196,7 +195,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
 
 
-                
+
 
             }
             catch (SQLiteException ex)
@@ -213,15 +212,15 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             ValidarDgv();
         }
 
-     
+
 
         // UpdateDato
 
         public SQLiteCommand UpdateDato()
         {
             string queryActualizar = "";
-        
-            
+
+
 
             SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB();
             conexionDB.Open();
@@ -247,7 +246,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Ingrese el nuevo estado y/o el nuevo tipo de usuario");
                 return null;
-                
+
             }
 
             //se crea el comando con uno de los querys de arriba
@@ -259,9 +258,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                 return null;
 
             }
-           
 
-            if (Convert.ToInt32(txtBuscarUsuario.Text) == 777) {
+
+            if (Convert.ToInt32(txtBuscarUsuario.Text) == 777)
+            {
                 MessageBox.Show("Error no tiene permisos para modificar al Administrador principal");
                 return null;
             }
@@ -278,12 +278,12 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                 cmd_actualizar.Parameters.AddWithValue("@Tipo_usuario", cbTipoUsuario.SelectedItem.ToString() == "Administrador" ? 1 : 0);
             }
 
-            
+
 
             return cmd_actualizar;
         }
 
-        
+
 
 
         //pa que vaya a la pagina principal
@@ -294,7 +294,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             Hide();
         }
 
-        
+
 
         //pa que solo ponga numeros
         private void txtBuscarUsuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -348,7 +348,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
                     UpdateDgv();
                 }
-               
+
 
                 conexionDB.Close();
             }
@@ -449,6 +449,220 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             dgvUsuarios.CurrentCell = dgvUsuarios.Rows[selectedRowIndex].Cells[0];
         }
 
+        /* IMPORTE y EXPORTE de datos*/
+
         
+        public static void ImportarDatos(string ruta)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(ruta))
+                using (CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    using (SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB())
+                    {
+                        conexionDB.Open();
+
+                        // una lista pa los datos que estamos importando
+                        List<Usuario> records = new List<Usuario>();
+                        
+                        
+                        // lista pa los regitros malitos
+                        List<Usuario> errorRecords = new List<Usuario>();
+
+                        // leemos el csv
+                        while (csv.Read())
+                        {
+                            bool tieneCamposVacios = false;
+
+                            // vemos registro cada uno de sus campos, si hay alguno vacio ya ese registro no nos sirve
+                            for (int i = 0; i < csv.Parser.Record.Length; i++)
+                            {
+                                if (string.IsNullOrEmpty(csv.GetField(i)))
+                                {
+                                    tieneCamposVacios = true;
+                                    break;
+                                }
+                            }
+
+                            // si tiene algun campo vacio entra aqui y lo agrega a esta lista de registros fallidos por si se necesitan pa algo
+                            // el continue es pa que no ejecute lo que hay abajo, y pa que siga con el siguiente registro
+                            if (tieneCamposVacios)
+                            {
+                                // lista de registro que no funcan
+                                errorRecords.Add(csv.GetRecord<Usuario>());
+                                continue;
+                            }
+
+                            // creamos una instacia de usuario (el modelo de abajo), y lo agregamos a los registros que si van
+                            Usuario usuario = csv.GetRecord<Usuario>();
+                            records.Add(usuario);
+
+
+                        }
+                        
+
+                        foreach (var record in records)
+                        {
+
+                            // Verificar si el Id_persona o la cedula ya existe en la tabla, si existe no lo agrega 
+                            using (SQLiteCommand checkCommand = new SQLiteCommand("SELECT COUNT(*) FROM tbl_Usuario WHERE Id_persona = @Id_persona OR Cedula=@Cedula", conexionDB))
+                            {
+                                checkCommand.Parameters.AddWithValue("@Id_persona", record.Id_persona);
+                                checkCommand.Parameters.AddWithValue("@Cedula", record.Cedula);
+                                int count = Convert.ToInt32(checkCommand.ExecuteScalar());
+
+                                if (count == 0)
+                                {
+
+                                    // El Id_persona no existe, realiza la inserción
+                                    using (SQLiteCommand command = new SQLiteCommand(conexionDB))
+                                    {
+
+                                        command.CommandText = "INSERT INTO tbl_Usuario (Id_persona, Nombre, Cedula, Contraseña, Estado, Tipo_usuario) VALUES (@Id_persona, @Nombre, @Cedula, @Contraseña, @Estado, @Tipo_usuario)";
+                                        command.Parameters.AddWithValue("@Id_persona", record.Id_persona);
+                                        command.Parameters.AddWithValue("@Nombre", record.Nombre);
+                                        command.Parameters.AddWithValue("@Cedula", record.Cedula);
+                                        command.Parameters.AddWithValue("@Contraseña", record.Contraseña);
+                                        command.Parameters.AddWithValue("@Estado", record.Estado);
+                                        command.Parameters.AddWithValue("@Tipo_usuario", record.Tipo_usuario);
+
+                                        command.ExecuteNonQuery();
+
+
+                                    }
+                                }
+                                else
+                                {
+                                    // El Id_persona ya existe, realizar alguna acción o mostrar un mensaje de error
+                                    Console.WriteLine($"El Id_persona {record.Id_persona} ya existe en la tabla.");
+                                }
+                            }
+                        }
+
+                        MessageBox.Show("Se importó correctamente los datos a la base de datos");
+
+                    }
+                }
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("Error (sql):\n" + ex.Message);
+                Console.WriteLine("Error (sql):\n" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al importar:\n" +
+                    "Revise que el archivo CSV cuente con todos sus valores y con sus respectivos tipos de datos\n" +
+                    "Revise que no haya otra aplicación haciendo uso del archivo CSV");
+                Console.WriteLine("Error:\n" + ex.Message);
+
+            }
+        }
+        
+
+      
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofdDatos = new OpenFileDialog())
+            {
+                ofdDatos.Filter = "Archivos CSV (*.csv)|*.csv";
+                ofdDatos.FilterIndex = 1;
+                ofdDatos.RestoreDirectory = true;
+
+                if (ofdDatos.ShowDialog() == DialogResult.OK)
+                {
+                    string ruta = ofdDatos.FileName;
+                    ImportarDatos(ruta);
+                }
+            }
+            UpdateDgv();
+        }
+
+        public static void ExportarDatos(string ruta)
+        {
+            try
+            {
+                using (var writer = new StreamWriter(ruta))
+                using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                {
+                    using (SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB())
+                    {
+                        conexionDB.Open();
+
+                        // Recupera los datos de la tabla de SQLite
+                        using (var command = new SQLiteCommand("SELECT * FROM tbl_Usuario", conexionDB))
+                        {
+                            using (var reader = command.ExecuteReader())
+                            {
+                                // Escribe los encabezados de las columnas en el archivo CSV
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    csv.WriteField(reader.GetName(i));
+                                }
+                                csv.NextRecord();
+
+                                // Escribe los registros en el archivo CSV
+                                while (reader.Read())
+                                {
+                                    for (int i = 0; i < reader.FieldCount; i++)
+                                    {
+                                        csv.WriteField(reader[i]);
+                                    }
+                                    csv.NextRecord();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                MessageBox.Show("Se exportó correctamente los datos a un archivo csv");
+
+
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("Error (sql):" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
+            }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfdExportar = new SaveFileDialog())
+            {
+                sfdExportar.Filter = "Archivos CSV (*.csv)|*.csv";
+                sfdExportar.Title = "Guardar archivo CSV";
+                sfdExportar.FileName = "tbl_Usuario.csv";
+
+                if (sfdExportar.ShowDialog() == DialogResult.OK)
+                {
+                    ExportarDatos(sfdExportar.FileName);
+
+                }
+            }
+
+        }
+
+
     }
+
+
+    //Esta es una clase aparte donde creamos un modelo para que al importar datos, no se muera esta wea
+    //Modelo
+    public class Usuario
+    {
+        public int Id_persona { get; set; }
+        public string Nombre { get; set; }
+        public int Cedula { get; set; }
+        public string Contraseña { get; set; }
+        public int Estado { get; set; }
+        public int Tipo_usuario { get; set; }
+
+    }
+
 }
