@@ -54,9 +54,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             // btn_Atras
             // 
-            this.btn_Atras.Location = new System.Drawing.Point(12, 12);
+            this.btn_Atras.Location = new System.Drawing.Point(16, 15);
+            this.btn_Atras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_Atras.Name = "btn_Atras";
-            this.btn_Atras.Size = new System.Drawing.Size(54, 49);
+            this.btn_Atras.Size = new System.Drawing.Size(72, 60);
             this.btn_Atras.TabIndex = 1;
             this.btn_Atras.Text = "ATRÁS";
             this.btn_Atras.UseVisualStyleBackColor = true;
@@ -66,10 +67,9 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(98, 264);
-            this.lblCantidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCantidad.Location = new System.Drawing.Point(131, 325);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(66, 18);
+            this.lblCantidad.Size = new System.Drawing.Size(82, 22);
             this.lblCantidad.TabIndex = 28;
             this.lblCantidad.Text = "Cantidad";
             // 
@@ -77,10 +77,9 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(98, 197);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNombre.Location = new System.Drawing.Point(131, 242);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(62, 18);
+            this.lblNombre.Size = new System.Drawing.Size(73, 22);
             this.lblNombre.TabIndex = 27;
             this.lblNombre.Text = "Nombre";
             // 
@@ -88,72 +87,70 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.lblProName.AutoSize = true;
             this.lblProName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProName.Location = new System.Drawing.Point(182, 90);
-            this.lblProName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProName.Location = new System.Drawing.Point(243, 111);
             this.lblProName.Name = "lblProName";
-            this.lblProName.Size = new System.Drawing.Size(150, 18);
+            this.lblProName.Size = new System.Drawing.Size(179, 22);
             this.lblProName.TabIndex = 26;
             this.lblProName.Text = "Nombre del Producto";
             // 
             // dgvInventario
             // 
             this.dgvInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventario.Location = new System.Drawing.Point(391, 120);
-            this.dgvInventario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvInventario.Location = new System.Drawing.Point(521, 148);
+            this.dgvInventario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvInventario.Name = "dgvInventario";
             this.dgvInventario.RowHeadersWidth = 51;
             this.dgvInventario.RowTemplate.Height = 24;
-            this.dgvInventario.Size = new System.Drawing.Size(384, 311);
+            this.dgvInventario.Size = new System.Drawing.Size(512, 383);
             this.dgvInventario.TabIndex = 25;
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(342, 20);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(456, 25);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(107, 26);
+            this.lblTitulo.Size = new System.Drawing.Size(139, 32);
             this.lblTitulo.TabIndex = 24;
             this.lblTitulo.Text = "Inventario";
             // 
             // txtBuscar
             // 
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.Location = new System.Drawing.Point(164, 132);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBuscar.Location = new System.Drawing.Point(219, 162);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(110, 26);
+            this.txtBuscar.Size = new System.Drawing.Size(145, 30);
             this.txtBuscar.TabIndex = 23;
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // txtCant
             // 
             this.txtCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCant.Location = new System.Drawing.Point(68, 293);
-            this.txtCant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCant.Location = new System.Drawing.Point(91, 361);
+            this.txtCant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCant.Name = "txtCant";
-            this.txtCant.Size = new System.Drawing.Size(110, 26);
+            this.txtCant.Size = new System.Drawing.Size(145, 30);
             this.txtCant.TabIndex = 22;
             this.txtCant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCant_KeyPress);
             // 
             // txtNombre
             // 
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(68, 217);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Location = new System.Drawing.Point(91, 267);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(110, 26);
+            this.txtNombre.Size = new System.Drawing.Size(145, 30);
             this.txtNombre.TabIndex = 21;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // btnBuscar
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnBuscar.Location = new System.Drawing.Point(278, 132);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBuscar.Location = new System.Drawing.Point(371, 162);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(72, 27);
+            this.btnBuscar.Size = new System.Drawing.Size(96, 33);
             this.btnBuscar.TabIndex = 20;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -162,10 +159,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnEliminar.Location = new System.Drawing.Point(246, 383);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Location = new System.Drawing.Point(328, 471);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(70, 31);
+            this.btnEliminar.Size = new System.Drawing.Size(93, 38);
             this.btnEliminar.TabIndex = 19;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -174,10 +171,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // btnActualizar
             // 
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnActualizar.Location = new System.Drawing.Point(140, 383);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnActualizar.Location = new System.Drawing.Point(187, 471);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(80, 31);
+            this.btnActualizar.Size = new System.Drawing.Size(107, 38);
             this.btnActualizar.TabIndex = 18;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -186,10 +183,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // btnGuardar
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnGuardar.Location = new System.Drawing.Point(44, 383);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGuardar.Location = new System.Drawing.Point(59, 471);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(70, 31);
+            this.btnGuardar.Size = new System.Drawing.Size(93, 38);
             this.btnGuardar.TabIndex = 17;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -198,21 +195,22 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // btnExportar
             // 
             this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnExportar.Location = new System.Drawing.Point(675, 61);
-            this.btnExportar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExportar.Location = new System.Drawing.Point(900, 75);
+            this.btnExportar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(88, 47);
+            this.btnExportar.Size = new System.Drawing.Size(117, 58);
             this.btnExportar.TabIndex = 16;
             this.btnExportar.Text = "Exportar";
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImportar
             // 
             this.btnImportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.btnImportar.Location = new System.Drawing.Point(563, 61);
-            this.btnImportar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImportar.Location = new System.Drawing.Point(751, 75);
+            this.btnImportar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(88, 47);
+            this.btnImportar.Size = new System.Drawing.Size(117, 58);
             this.btnImportar.TabIndex = 15;
             this.btnImportar.Text = "Importar";
             this.btnImportar.UseVisualStyleBackColor = true;
@@ -221,55 +219,57 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(185, 217);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtId.Location = new System.Drawing.Point(247, 267);
+            this.txtId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(36, 26);
+            this.txtId.Size = new System.Drawing.Size(47, 30);
             this.txtId.TabIndex = 29;
             // 
             // lblId
             // 
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(193, 197);
-            this.lblId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblId.Location = new System.Drawing.Point(257, 242);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(22, 18);
+            this.lblId.Size = new System.Drawing.Size(27, 22);
             this.lblId.TabIndex = 30;
             this.lblId.Text = "ID";
             // 
             // lbl_Usuario
             // 
             this.lbl_Usuario.AutoSize = true;
-            this.lbl_Usuario.Location = new System.Drawing.Point(12, 78);
+            this.lbl_Usuario.Location = new System.Drawing.Point(16, 96);
+            this.lbl_Usuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Usuario.Name = "lbl_Usuario";
-            this.lbl_Usuario.Size = new System.Drawing.Size(46, 13);
+            this.lbl_Usuario.Size = new System.Drawing.Size(57, 16);
             this.lbl_Usuario.TabIndex = 31;
             this.lbl_Usuario.Text = "Usuario:";
             // 
             // lbl_NombreUsuario
             // 
             this.lbl_NombreUsuario.AutoSize = true;
-            this.lbl_NombreUsuario.Location = new System.Drawing.Point(64, 78);
+            this.lbl_NombreUsuario.Location = new System.Drawing.Point(85, 96);
+            this.lbl_NombreUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_NombreUsuario.Name = "lbl_NombreUsuario";
-            this.lbl_NombreUsuario.Size = new System.Drawing.Size(35, 13);
+            this.lbl_NombreUsuario.Size = new System.Drawing.Size(44, 16);
             this.lbl_NombreUsuario.TabIndex = 32;
             this.lbl_NombreUsuario.Text = "label2";
             // 
             // lbl_TipoUsuario
             // 
             this.lbl_TipoUsuario.AutoSize = true;
-            this.lbl_TipoUsuario.Location = new System.Drawing.Point(14, 95);
+            this.lbl_TipoUsuario.Location = new System.Drawing.Point(19, 117);
+            this.lbl_TipoUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TipoUsuario.Name = "lbl_TipoUsuario";
-            this.lbl_TipoUsuario.Size = new System.Drawing.Size(28, 13);
+            this.lbl_TipoUsuario.Size = new System.Drawing.Size(35, 16);
             this.lbl_TipoUsuario.TabIndex = 33;
             this.lbl_TipoUsuario.Text = "Tipo";
             // 
             // frm_Inventario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.lbl_TipoUsuario);
             this.Controls.Add(this.lbl_NombreUsuario);
             this.Controls.Add(this.lbl_Usuario);
@@ -290,6 +290,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.btn_Atras);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frm_Inventario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_Inventario";

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Xml.Linq;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
@@ -24,7 +27,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private static string tableName = "tbl_Producto";
         public frm_Inventario()
         {
-            InitializeComponent();       
+            InitializeComponent();
         }
 
         private void btn_Atras_Click(object sender, EventArgs e)
@@ -41,7 +44,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 try
                 {
-                 
+
                     //Conexion a la base de datos
                     conexion_sqlite = new SQLiteConnection("Data Source=DB_DonacionesSA.db;Version=3;");
 
@@ -62,7 +65,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
                     //Insertando valores, no se inserta el id ya que es auto incrementable
                     cmd_sqlite.CommandText = string.Format("INSERT INTO tbl_Producto (Nombre_producto, Cantidad) VALUES ('" + txtNombre.Text + "', " + txtCant.Text + ")");
-                    cmd_sqlite.ExecuteNonQuery();   
+                    cmd_sqlite.ExecuteNonQuery();
                     MessageBox.Show("Registrado Correctamente");
                 }
                 catch (Exception iu)
@@ -238,12 +241,12 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             lbl_NombreUsuario.Text = Global.UsuarioGlobal;
             lbl_TipoUsuario.Text = Global.TipoUsuario;
 
-            if(lbl_TipoUsuario.Text=="Empleado")
+            if (lbl_TipoUsuario.Text == "Empleado")
             {
                 btnEliminar.Enabled = false;
                 btnActualizar.Enabled = false;
             }
-           
+
         }
 
         //se obtienen los datos de la DB
@@ -301,7 +304,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
                 dgvInventario.Columns.Add("Id_producto", "ID");
                 dgvInventario.Columns.Add("Nombre_producto", "Nombre");
-                dgvInventario.Columns.Add("Cantidad", "Cantidad");    
+                dgvInventario.Columns.Add("Cantidad", "Cantidad");
 
                 while (datareader_sqlite.Read())
                 {
@@ -326,13 +329,173 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Error (mostrando los datos en el dgv):\n" + ex);
             }
-
-
+            //para actualizar/mostrar los datos de la DB por si hay algun cambio, ya sea un create, update, delete o solo si se quiere obtener los elementos
+            //este metodo muestra los datos en el dgv ya sea la primera vez o si hay alguna actualizacion
         }
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Archivos CSV (*.csv)|*.csv";
+                ofd.FilterIndex = 1;
+                ofd.RestoreDirectory = true;
 
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string ruta = ofd.FileName;
+                    ImportarDatos(ruta);
+                }
+            }
+            UpdateDgv();    
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Archivo CSV (*.csv)|*.csv";
+                sfd.Title = "Guardar archivo CSV";
+                sfd.FileName= "tbl_Producto.csv";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportarDatos(sfd.FileName);
+                }
+            }
+        }
+
+        public static void ImportarDatos(string ruta)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(ruta))
+                using (CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    using (SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB())
+                    {
+                        conexionDB.Open();
+
+                        // una lista pa los datos que estamos importando
+                        List<Usuario> records = new List<Usuario>();
+
+                        //Registros malos
+                        List<Usuario> ErrorRecords = new List<Usuario>();
+
+                        //leer csv
+                        while (csv.Read())
+                        {
+                            bool emptycamps = false;
+
+                            //Ver que este vacio y si lo esta el registro no sirve
+                            for (int i = 0; i < csv.Parser.Record.Length; i++)
+                            {
+                                if (string.IsNullOrEmpty(csv.Parser.Record[i]))
+                                {
+                                    emptycamps = true;
+                                    break;
+                                }
+                            }
+
+                            // si tiene algun campo vacio entra aqui y lo agrega a esta lista de registros fallidos
+                            if (emptycamps)
+                            {
+                                ErrorRecords.Add(csv.GetRecord<Usuario>());
+                            }
+
+                            Usuario usuario = csv.GetRecord<Usuario>();
+                            records.Add(usuario);
+                        }
+
+                        foreach (var record in records)
+                        {
+                            // Verificar si el Id_persona o la cedula ya existe en la tabla, si existe no lo agrega 
+                            using (SQLiteCommand check = new SQLiteCommand("SELECT COUNT(*) FROM tbl_Producto where Id_producto = @ID", conexionDB))
+                            {
+                                check.Parameters.AddWithValue("@ID", record.Id_producto);
+                                int count  = Convert.ToInt32(check.ExecuteScalar());
+
+                                if (count > 0)
+                                {
+                                    using (SQLiteCommand cm = new SQLiteCommand(conexionDB))
+                                    {
+                                        cm.CommandText = "INSERT INTO tbl_Producto (Id_producto, Nombre_producto, cantidad) VALUES (@ID, @nombre, @cantidad)";
+                                        cm.Parameters.AddWithValue("@ID", record.Id_producto);
+                                        cm.Parameters.AddWithValue("@nombre", record.Nombre_producto);
+                                        cm.Parameters.AddWithValue("@cantidad", record.Cantidad);
+
+                                        cm.ExecuteNonQuery();
+                                    }
+                                }
+                                else
+                                {
+                                    // El Id_producto ya existe, realizar alguna acción o mostrar un mensaje de error
+                                    Console.WriteLine($"El Id_prodcuto {record.Id_producto} ya existe en la tabla");
+                                }
+                            }
+                        }
+                        MessageBox.Show("Se importó correctamente los datos a la base de datos");
+                    }
+                }
+            }
+            catch (SQLiteException lol)
+            {
+                MessageBox.Show("Erro (sql): \n" + lol.Message);
+                Console.WriteLine("Erro (sql): \n" + lol.Message);
+            }
+            catch (Exception u)
+            {
+                MessageBox.Show("Error al importar:\n" +
+                   "Revise que el archivo CSV cuente con todos sus valores y con sus respectivos tipos de datos\n" +
+                   "Revise que no haya otra aplicación haciendo uso del archivo CSV");
+                Console.WriteLine("Error:\n" + u.Message);
+            }
+        }
+
+        public static void ExportarDatos(string ruta)
+        {
+            try
+            {
+                using (var write = new StreamWriter(ruta))
+                using (var csv = new CsvWriter(write, CultureInfo.InvariantCulture))
+                {
+                    using (SQLiteConnection conexionDB = new ConexionDB(DBName).ConectarDB())
+                    {
+                        conexionDB.Open();
+                        // Recupera los datos de la tabla de SQLite
+                        using (var cm = new SQLiteCommand("SELECT * FROM tbl_Producto", conexionDB))
+                        {
+                            using (var reader = cm.ExecuteReader())
+                            {
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    csv.WriteField(reader.GetName(i));
+                                }
+                                csv.NextRecord();
+
+                                while (reader.Read())
+                                {
+                                    for (int i = 0; i < reader.FieldCount; i++)
+                                    {
+                                        csv.WriteField(reader[i]);
+                                    }
+                                    csv.NextRecord();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                MessageBox.Show("Se exportó correctamente los datos a un archivo csv");
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show("Error (sql):" + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message);
+            }
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -340,7 +503,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // sirve para ignorar el carácter ingresado (número)
             if (char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
         }
 
@@ -361,7 +524,12 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                 e.Handled = true;
             }
         }
-        //para actualizar/mostrar los datos de la DB por si hay algun cambio, ya sea un create, update, delete o solo si se quiere obtener los elementos
-        //este metodo muestra los datos en el dgv ya sea la primera vez o si hay alguna actualizacion
+
+        public class Usuario
+        {
+            public int Id_producto { get; set; }
+            public string Nombre_producto { get; set; }
+            public int Cantidad { get; set; }
+        }
     }
 }
