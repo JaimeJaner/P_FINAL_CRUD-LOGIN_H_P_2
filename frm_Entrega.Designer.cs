@@ -36,12 +36,13 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btnCargar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDoc = new System.Windows.Forms.TextBox();
             this.btnEntregar = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
             this.lbl_TipoUsuario = new System.Windows.Forms.Label();
             this.lbl_NombreUsuario = new System.Windows.Forms.Label();
             this.lbl_Usuario = new System.Windows.Forms.Label();
+            this.btnActualizarEntrega = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDisponibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntregados)).BeginInit();
             this.SuspendLayout();
@@ -59,22 +60,22 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // dgvDisponibles
             // 
             this.dgvDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDisponibles.Location = new System.Drawing.Point(57, 77);
+            this.dgvDisponibles.Location = new System.Drawing.Point(12, 71);
             this.dgvDisponibles.Name = "dgvDisponibles";
-            this.dgvDisponibles.Size = new System.Drawing.Size(240, 150);
+            this.dgvDisponibles.Size = new System.Drawing.Size(285, 273);
             this.dgvDisponibles.TabIndex = 2;
             // 
             // dgvEntregados
             // 
             this.dgvEntregados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEntregados.Location = new System.Drawing.Point(505, 77);
+            this.dgvEntregados.Location = new System.Drawing.Point(445, 77);
             this.dgvEntregados.Name = "dgvEntregados";
-            this.dgvEntregados.Size = new System.Drawing.Size(240, 150);
+            this.dgvEntregados.Size = new System.Drawing.Size(343, 267);
             this.dgvEntregados.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(126, 243);
+            this.button1.Location = new System.Drawing.Point(79, 350);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(63, 31);
             this.button1.TabIndex = 4;
@@ -83,7 +84,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(57, 243);
+            this.btnCargar.Location = new System.Drawing.Point(3, 350);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(63, 31);
             this.btnCargar.TabIndex = 5;
@@ -100,37 +101,39 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(432, 71);
+            this.btnBuscar.Location = new System.Drawing.Point(363, 103);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(63, 31);
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.Text = "BUSCAR";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
-            // textBox1
+            // txtDoc
             // 
-            this.textBox1.Location = new System.Drawing.Point(303, 155);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(123, 20);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "Cedula beneficiario";
+            this.txtDoc.Location = new System.Drawing.Point(303, 189);
+            this.txtDoc.Name = "txtDoc";
+            this.txtDoc.Size = new System.Drawing.Size(123, 20);
+            this.txtDoc.TabIndex = 8;
+            this.txtDoc.Text = "Cedula beneficiario";
             // 
             // btnEntregar
             // 
-            this.btnEntregar.Location = new System.Drawing.Point(363, 196);
+            this.btnEntregar.Location = new System.Drawing.Point(332, 215);
             this.btnEntregar.Name = "btnEntregar";
             this.btnEntregar.Size = new System.Drawing.Size(63, 31);
             this.btnEntregar.TabIndex = 9;
             this.btnEntregar.Text = "Entregar";
             this.btnEntregar.UseVisualStyleBackColor = true;
+            this.btnEntregar.Click += new System.EventHandler(this.btnEntregar_Click);
             // 
-            // textBox2
+            // txtCantidad
             // 
-            this.textBox2.Location = new System.Drawing.Point(303, 103);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(54, 20);
-            this.textBox2.TabIndex = 10;
-            this.textBox2.Text = "Cantidad";
+            this.txtCantidad.Location = new System.Drawing.Point(303, 103);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(54, 20);
+            this.txtCantidad.TabIndex = 10;
+            this.txtCantidad.Text = "Cantidad";
             // 
             // lbl_TipoUsuario
             // 
@@ -159,17 +162,28 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.lbl_Usuario.TabIndex = 34;
             this.lbl_Usuario.Text = "Usuario:";
             // 
+            // btnActualizarEntrega
+            // 
+            this.btnActualizarEntrega.Location = new System.Drawing.Point(445, 350);
+            this.btnActualizarEntrega.Name = "btnActualizarEntrega";
+            this.btnActualizarEntrega.Size = new System.Drawing.Size(63, 31);
+            this.btnActualizarEntrega.TabIndex = 37;
+            this.btnActualizarEntrega.Text = "Actualizar";
+            this.btnActualizarEntrega.UseVisualStyleBackColor = true;
+            this.btnActualizarEntrega.Click += new System.EventHandler(this.btnActualizarEntrega_Click);
+            // 
             // frm_Entrega
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnActualizarEntrega);
             this.Controls.Add(this.lbl_TipoUsuario);
             this.Controls.Add(this.lbl_NombreUsuario);
             this.Controls.Add(this.lbl_Usuario);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.btnEntregar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDoc);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnCargar);
@@ -197,11 +211,12 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDoc;
         private System.Windows.Forms.Button btnEntregar;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label lbl_TipoUsuario;
         private System.Windows.Forms.Label lbl_NombreUsuario;
         private System.Windows.Forms.Label lbl_Usuario;
+        private System.Windows.Forms.Button btnActualizarEntrega;
     }
 }
