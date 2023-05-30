@@ -37,9 +37,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.lbl_User = new System.Windows.Forms.Label();
             this.txt_Password = new System.Windows.Forms.TextBox();
             this.txt_User = new System.Windows.Forms.TextBox();
-            this.btn_Registro = new System.Windows.Forms.Button();
             this.lbl_Nombre = new System.Windows.Forms.Label();
             this.txt_Nombre = new System.Windows.Forms.TextBox();
+            this.btn_Registro = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
             this.SuspendLayout();
             // 
             // lbl_Registro
@@ -113,17 +114,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.txt_User.Size = new System.Drawing.Size(210, 20);
             this.txt_User.TabIndex = 45;
             // 
-            // btn_Registro
-            // 
-            this.btn_Registro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Registro.Location = new System.Drawing.Point(285, 333);
-            this.btn_Registro.Name = "btn_Registro";
-            this.btn_Registro.Size = new System.Drawing.Size(210, 21);
-            this.btn_Registro.TabIndex = 44;
-            this.btn_Registro.Text = "Registrarse";
-            this.btn_Registro.UseVisualStyleBackColor = true;
-            this.btn_Registro.Click += new System.EventHandler(this.btn_Registro_Click);
-            // 
             // lbl_Nombre
             // 
             this.lbl_Nombre.AutoSize = true;
@@ -140,11 +130,52 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.txt_Nombre.Size = new System.Drawing.Size(210, 20);
             this.txt_Nombre.TabIndex = 53;
             // 
+            // btn_Registro
+            // 
+            this.btn_Registro.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_Registro.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btn_Registro.Depth = 0;
+            this.btn_Registro.HighEmphasis = true;
+            this.btn_Registro.Icon = null;
+            this.btn_Registro.Location = new System.Drawing.Point(310, 327);
+            this.btn_Registro.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btn_Registro.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btn_Registro.Name = "btn_Registro";
+            this.btn_Registro.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btn_Registro.Size = new System.Drawing.Size(158, 36);
+            this.btn_Registro.TabIndex = 56;
+            this.btn_Registro.Text = "materialButton1";
+            this.btn_Registro.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btn_Registro.UseAccentColor = false;
+            this.btn_Registro.UseVisualStyleBackColor = true;
+            this.btn_Registro.Click += new System.EventHandler(this.btn_Registro_Click_1);
+            // 
+            // materialButton2
+            // 
+            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton2.Depth = 0;
+            this.materialButton2.HighEmphasis = true;
+            this.materialButton2.Icon = null;
+            this.materialButton2.Location = new System.Drawing.Point(129, 395);
+            this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton2.Name = "materialButton2";
+            this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton2.Size = new System.Drawing.Size(158, 36);
+            this.materialButton2.TabIndex = 57;
+            this.materialButton2.Text = "materialButton2";
+            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton2.UseAccentColor = false;
+            this.materialButton2.UseVisualStyleBackColor = true;
+            // 
             // frm_SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.materialButton2);
+            this.Controls.Add(this.btn_Registro);
             this.Controls.Add(this.lbl_Nombre);
             this.Controls.Add(this.txt_Nombre);
             this.Controls.Add(this.lbl_Registro);
@@ -155,10 +186,10 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.Controls.Add(this.lbl_User);
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.txt_User);
-            this.Controls.Add(this.btn_Registro);
             this.Name = "frm_SignUp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frm_SignUp";
+            this.Text = "Donaciones SA";
+            this.Load += new System.EventHandler(this.frm_SignUp_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,8 +205,9 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private System.Windows.Forms.Label lbl_User;
         private System.Windows.Forms.TextBox txt_Password;
         private System.Windows.Forms.TextBox txt_User;
-        private System.Windows.Forms.Button btn_Registro;
         private System.Windows.Forms.Label lbl_Nombre;
         private System.Windows.Forms.TextBox txt_Nombre;
+        private MaterialSkin.Controls.MaterialButton btn_Registro;
+        private MaterialSkin.Controls.MaterialButton materialButton2;
     }
 }

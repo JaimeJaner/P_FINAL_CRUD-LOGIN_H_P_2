@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using MaterialSkin.Controls;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
-    public partial class frm_InicioApp : Form
+    public partial class frm_InicioApp : MaterialForm
     {
 
         /// <summary>
@@ -39,6 +40,25 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         {
             frm_SignIn SI = new frm_SignIn();
             SI.Show();
+            Hide();
+        }
+
+        private void frm_InicioApp_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_IniciarSesion_Click_1(object sender, EventArgs e)
+        {
+            frm_SignIn SI = new frm_SignIn();
+            SI.Show();
+            Hide();
+        }
+
+        private void btn_Registrarse_Click_1(object sender, EventArgs e)
+        {
+            frm_SignUp SU = new frm_SignUp();
+            SU.Show();
             Hide();
         }
     }
