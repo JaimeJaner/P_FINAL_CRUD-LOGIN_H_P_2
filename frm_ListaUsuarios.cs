@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
-    public partial class frm_ListaUsuarios : Form
+    public partial class frm_ListaUsuarios : MaterialForm
     {
 
         private static string DBName = "DB_DonacionesSA";

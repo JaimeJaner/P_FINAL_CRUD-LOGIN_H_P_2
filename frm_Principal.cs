@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using MaterialSkin.Controls;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
-    public partial class frm_Principal : Form
+    public partial class frm_Principal : MaterialForm
     {
         public frm_Principal()
         {

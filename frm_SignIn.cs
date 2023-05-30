@@ -8,11 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using MaterialSkin.Controls;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
     
-    public partial class frm_SignIn : Form
+    public partial class frm_SignIn : MaterialForm
     {
         public int intentos;
         public frm_SignIn()
@@ -121,5 +122,9 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             }
         }
 
+        private void frm_SignIn_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
