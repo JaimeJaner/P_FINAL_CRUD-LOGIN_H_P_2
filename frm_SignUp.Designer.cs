@@ -156,7 +156,11 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btn_Atras.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_Atras.UseAccentColor = false;
             this.btn_Atras.UseVisualStyleBackColor = true;
+<<<<<<< HEAD
           
+=======
+            this.btn_Atras.Click += new System.EventHandler(this.btn_Atras_Click_1);
+>>>>>>> 76e2c1ef94be452893ab7c500c1c520bd4e84901
             // 
             // frm_SignUp
             // 
