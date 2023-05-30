@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Data.SqlClient;
+using MaterialSkin.Controls;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
-    public partial class frm_Entrega : Form
+    public partial class frm_Entrega : MaterialForm
     {
 
         SQLiteConnection conexion_sqlite;

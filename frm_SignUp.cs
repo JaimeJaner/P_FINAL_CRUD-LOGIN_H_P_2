@@ -19,12 +19,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             InitializeComponent();
         }
 
-        private void btn_Atras_Click(object sender, EventArgs e)
-        {
-            frm_InicioApp Inicio = new frm_InicioApp();
-            Inicio.Show();
-            Hide();
-        }
+    
 
         private void btn_Registro_Click(object sender, EventArgs e)
         {
@@ -197,6 +192,14 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             {
                 MessageBox.Show("Por favor, rellene todos los campos para registrarse.");
             }
+        }
+
+        private void btn_Atras_Click_1(object sender, EventArgs e)
+        {
+
+            frm_InicioApp Inicio = new frm_InicioApp();
+            Inicio.Show();
+            Hide();
         }
     }
 }
