@@ -12,10 +12,11 @@ using System.Xml.Linq;
 using CsvHelper;
 using System.Globalization;
 using System.IO;
+using MaterialSkin.Controls;
 
 namespace P_FINAL_CRUD_LOGIN_H_P_2
 {
-    public partial class frm_Inventario : Form
+    public partial class frm_Inventario : MaterialForm
     {
         //Algunos comandos necesarios para la conexion
         SQLiteConnection conexion_sqlite;

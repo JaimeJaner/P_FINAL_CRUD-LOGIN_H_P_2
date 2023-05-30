@@ -30,7 +30,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private void InitializeComponent()
         {
             this.lbl_Registro = new System.Windows.Forms.Label();
-            this.btn_Atras = new System.Windows.Forms.Button();
             this.lbl_confirmar = new System.Windows.Forms.Label();
             this.txt_Confirmar = new System.Windows.Forms.TextBox();
             this.lbl_Password = new System.Windows.Forms.Label();
@@ -40,7 +39,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.lbl_Nombre = new System.Windows.Forms.Label();
             this.txt_Nombre = new System.Windows.Forms.TextBox();
             this.btn_Registro = new MaterialSkin.Controls.MaterialButton();
-            this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
+            this.btn_Atras = new MaterialSkin.Controls.MaterialButton();
             this.SuspendLayout();
             // 
             // lbl_Registro
@@ -52,17 +51,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.lbl_Registro.Size = new System.Drawing.Size(279, 73);
             this.lbl_Registro.TabIndex = 52;
             this.lbl_Registro.Text = "Registro";
-            // 
-            // btn_Atras
-            // 
-            this.btn_Atras.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Atras.Location = new System.Drawing.Point(285, 372);
-            this.btn_Atras.Name = "btn_Atras";
-            this.btn_Atras.Size = new System.Drawing.Size(210, 21);
-            this.btn_Atras.TabIndex = 51;
-            this.btn_Atras.Text = "Atrás";
-            this.btn_Atras.UseVisualStyleBackColor = true;
-            this.btn_Atras.Click += new System.EventHandler(this.btn_Atras_Click);
             // 
             // lbl_confirmar
             // 
@@ -137,49 +125,49 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btn_Registro.Depth = 0;
             this.btn_Registro.HighEmphasis = true;
             this.btn_Registro.Icon = null;
-            this.btn_Registro.Location = new System.Drawing.Point(310, 327);
+            this.btn_Registro.Location = new System.Drawing.Point(285, 327);
             this.btn_Registro.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btn_Registro.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_Registro.Name = "btn_Registro";
             this.btn_Registro.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btn_Registro.Size = new System.Drawing.Size(158, 36);
+            this.btn_Registro.Size = new System.Drawing.Size(90, 36);
             this.btn_Registro.TabIndex = 56;
-            this.btn_Registro.Text = "materialButton1";
+            this.btn_Registro.Text = "Registro";
             this.btn_Registro.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_Registro.UseAccentColor = false;
             this.btn_Registro.UseVisualStyleBackColor = true;
             this.btn_Registro.Click += new System.EventHandler(this.btn_Registro_Click_1);
             // 
-            // materialButton2
+            // btn_Atras
             // 
-            this.materialButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton2.Depth = 0;
-            this.materialButton2.HighEmphasis = true;
-            this.materialButton2.Icon = null;
-            this.materialButton2.Location = new System.Drawing.Point(129, 395);
-            this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton2.Name = "materialButton2";
-            this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton2.Size = new System.Drawing.Size(158, 36);
-            this.materialButton2.TabIndex = 57;
-            this.materialButton2.Text = "materialButton2";
-            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton2.UseAccentColor = false;
-            this.materialButton2.UseVisualStyleBackColor = true;
+            this.btn_Atras.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_Atras.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btn_Atras.Depth = 0;
+            this.btn_Atras.HighEmphasis = true;
+            this.btn_Atras.Icon = null;
+            this.btn_Atras.Location = new System.Drawing.Point(428, 327);
+            this.btn_Atras.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btn_Atras.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btn_Atras.Name = "btn_Atras";
+            this.btn_Atras.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btn_Atras.Size = new System.Drawing.Size(67, 36);
+            this.btn_Atras.TabIndex = 57;
+            this.btn_Atras.Text = "Atrás";
+            this.btn_Atras.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btn_Atras.UseAccentColor = false;
+            this.btn_Atras.UseVisualStyleBackColor = true;
+            this.btn_Atras.Click += new System.EventHandler(this.btn_Atras_Click_1);
             // 
             // frm_SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.materialButton2);
+            this.Controls.Add(this.btn_Atras);
             this.Controls.Add(this.btn_Registro);
             this.Controls.Add(this.lbl_Nombre);
             this.Controls.Add(this.txt_Nombre);
             this.Controls.Add(this.lbl_Registro);
-            this.Controls.Add(this.btn_Atras);
             this.Controls.Add(this.lbl_confirmar);
             this.Controls.Add(this.txt_Confirmar);
             this.Controls.Add(this.lbl_Password);
@@ -198,7 +186,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         #endregion
 
         private System.Windows.Forms.Label lbl_Registro;
-        private System.Windows.Forms.Button btn_Atras;
         private System.Windows.Forms.Label lbl_confirmar;
         private System.Windows.Forms.TextBox txt_Confirmar;
         private System.Windows.Forms.Label lbl_Password;
@@ -208,6 +195,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         private System.Windows.Forms.Label lbl_Nombre;
         private System.Windows.Forms.TextBox txt_Nombre;
         private MaterialSkin.Controls.MaterialButton btn_Registro;
-        private MaterialSkin.Controls.MaterialButton materialButton2;
+        private MaterialSkin.Controls.MaterialButton btn_Atras;
     }
 }
