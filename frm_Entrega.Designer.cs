@@ -163,7 +163,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.txtBuscar.SkipLiterals = true;
             this.txtBuscar.TabIndex = 40;
             this.txtBuscar.TabStop = false;
-            this.txtBuscar.Text = "Nombre del producto";
             this.txtBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtBuscar.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
             this.txtBuscar.TrailingIcon = null;
@@ -232,7 +231,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             this.btnBuscar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnBuscar.UseAccentColor = false;
             this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
             // txtDoc
             // 

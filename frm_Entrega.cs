@@ -190,12 +190,6 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             entregas();
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            
-           
-        }
-
 
         private string productoSeleccionado;
         private int cantidadSeleccionada;
