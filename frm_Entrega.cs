@@ -19,7 +19,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
         SQLiteCommand cmd_sqlite;
         SQLiteDataReader datareader_sqlite;
 
-
+        private int cont = 0;
         private static string DBName = "DB_DonacionesSA";
         private static string tableName = "tbl_Producto";
         public frm_Entrega()
@@ -198,12 +198,28 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
 
         private string productoSeleccionado;
         private int cantidadSeleccionada;
+
         private void btnEntregar_Click(object sender, EventArgs e)
         {
+            productoSeleccionado = txtBuscar.Text;
+            cantidadSeleccionada = Convert.ToInt32(txtCantidad.Text);
+
             if (!string.IsNullOrEmpty(productoSeleccionado))
             {
                 // Agregar los datos a la dgvEntregas
-                dgvEntregados.Rows.Add(productoSeleccionado, cantidadSeleccionada);
+               
+
+                dgvEntregados.Rows.Clear();
+                dgvEntregados.Columns.Clear();
+
+                dgvEntregados.Columns.Add("Id_entrega", "id");
+                dgvEntregados.Columns.Add("Id_persona", "Documento empleado");
+                dgvEntregados.Columns.Add("Cedula_recibe", "Documento Beneficiario");
+                dgvEntregados.Columns.Add("Id_producro", "Id producto");
+                dgvEntregados.Columns.Add("Cantidad", "Cantidad producto");
+                dgvEntregados.Columns.Add("Fecha", "Fehca Entrega");
+
+                dgvEntregados.Rows.Add(cont+1, Global.UsuarioGlobal,txtDoc.Text , cantidadSeleccionada);
 
                 // Limpiar las variables para futuras entregas
                 productoSeleccionado = null;
@@ -243,12 +259,16 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
                     if (reader.Read())
                     {
                         // Producto y cantidad válidos, seleccionar el producto
-                        string productoSeleccionado = reader["Nombre_producto"].ToString();
-                        int cantidadSeleccionada = cantidad;
+
+                        
 
                         // Actualizar la interfaz de usuario si es necesario
                         // Por ejemplo, mostrar un mensaje de éxito
                         MessageBox.Show("Producto válido. Puede realizar la entrega.");
+                        string productoSeleccionado;
+                        int cantidadSeleccionada;
+                        productoSeleccionado = txtBuscar.Text;
+                        cantidadSeleccionada = Convert.ToInt32(txtCantidad.Text);
                     }
                     else
                     {
