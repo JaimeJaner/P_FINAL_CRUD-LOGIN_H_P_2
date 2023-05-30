@@ -99,7 +99,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.dgvInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInventario.Location = new System.Drawing.Point(391, 120);
-            this.dgvInventario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvInventario.Margin = new System.Windows.Forms.Padding(2);
             this.dgvInventario.Name = "dgvInventario";
             this.dgvInventario.RowHeadersWidth = 51;
             this.dgvInventario.RowTemplate.Height = 24;
@@ -121,7 +121,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBuscar.Location = new System.Drawing.Point(164, 132);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(110, 26);
             this.txtBuscar.TabIndex = 23;
@@ -131,7 +131,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.txtCant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCant.Location = new System.Drawing.Point(68, 293);
-            this.txtCant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCant.Margin = new System.Windows.Forms.Padding(2);
             this.txtCant.Name = "txtCant";
             this.txtCant.Size = new System.Drawing.Size(110, 26);
             this.txtCant.TabIndex = 22;
@@ -141,7 +141,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.Location = new System.Drawing.Point(68, 217);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(110, 26);
             this.txtNombre.TabIndex = 21;
@@ -151,7 +151,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.btnBuscar.Location = new System.Drawing.Point(278, 132);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(72, 27);
             this.btnBuscar.TabIndex = 20;
@@ -163,7 +163,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.btnEliminar.Location = new System.Drawing.Point(246, 383);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(70, 31);
             this.btnEliminar.TabIndex = 19;
@@ -175,7 +175,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.btnActualizar.Location = new System.Drawing.Point(140, 383);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(80, 31);
             this.btnActualizar.TabIndex = 18;
@@ -187,7 +187,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.btnGuardar.Location = new System.Drawing.Point(44, 383);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(70, 31);
             this.btnGuardar.TabIndex = 17;
@@ -199,18 +199,19 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.btnExportar.Location = new System.Drawing.Point(675, 61);
-            this.btnExportar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExportar.Margin = new System.Windows.Forms.Padding(2);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(88, 47);
             this.btnExportar.TabIndex = 16;
             this.btnExportar.Text = "Exportar";
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImportar
             // 
             this.btnImportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.btnImportar.Location = new System.Drawing.Point(563, 61);
-            this.btnImportar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnImportar.Margin = new System.Windows.Forms.Padding(2);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(88, 47);
             this.btnImportar.TabIndex = 15;
@@ -222,7 +223,7 @@ namespace P_FINAL_CRUD_LOGIN_H_P_2
             // 
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtId.Location = new System.Drawing.Point(185, 217);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(36, 26);
             this.txtId.TabIndex = 29;
